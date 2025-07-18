@@ -1,0 +1,56 @@
+.transparencySection {
+  background-color: var(--cor-bege);
+  color: var(--cor-verde-escuro);
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.introContainer {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.sectionParagraph {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+.placeholderCard {
+  border: 2px dashed rgba(0, 54, 45, 0.4); 
+  border-radius: 24px;
+  padding: 4rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+  color: var(--cor-verde-escuro);
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+}
+
+.placeholderText {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto;
+  opacity: 0.8;
+}

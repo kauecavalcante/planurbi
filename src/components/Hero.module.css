@@ -1,0 +1,99 @@
+.heroSection {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+
+.backgroundImage {
+  position: absolute;
+  z-index: 0; 
+  opacity: 0.15;
+  pointer-events: none; 
+}
+
+.mapa {
+  width: 40vw;
+  max-width: 500px;
+  aspect-ratio: 1.6 / 1; 
+  height: auto;
+  bottom: -5%;
+  right: -5%; 
+}
+
+.forma {
+  width: 35vw;
+  max-width: 450px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  top: -10%;
+  right: -10%;
+  transform: rotate(15deg);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.contentWrapper {
+  max-width: 850px;
+}
+
+.logoContainer {
+  margin-bottom: 4rem;
+}
+
+.logoImage {
+  height: auto; 
+}
+
+.mainHeadline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 2.5rem;
+}
+
+.textBlock {
+  max-width: 650px;
+}
+
+.paragraph {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.paragraph:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+
+@media (max-width: 768px) {
+  .contentWrapper {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .logoContainer {
+     margin-bottom: 3rem;
+  }
+  .mapa {
+    width: 60vw;
+    bottom: -2%;
+    right: -15%;
+  }
+  .forma {
+    width: 50vw;
+    top: -5%;
+    right: -15%;
+  }
+}

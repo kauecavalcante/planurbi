@@ -1,0 +1,121 @@
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aboutSection {
+  background-color: var(--cor-verde-escuro);
+  color: #B8BCBD;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.introBlock {
+  max-width: 800px;
+  margin: 0 auto 5rem auto;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: #B8BCBD;
+}
+
+.sectionParagraph {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.sectionParagraph:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.diferenciaisBlock {
+  text-align: center;
+}
+
+.subTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #B8BCBD;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(184, 188, 189, 0.2);
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  opacity: 0;
+  animation: fadeInSlideUp 0.5s forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(184, 188, 189, 0.4);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cardIcon {
+  margin-bottom: 1.5rem;
+  color: #B8BCBD;
+  background-color: rgba(184, 188, 189, 0.1);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.cardIcon i {
+  font-size: 28px;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #B8BCBD;
+}
+
+.cardDescription {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}

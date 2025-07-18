@@ -1,0 +1,77 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resultsSection {
+  background-color: var(--cor-bege);
+  color: var(--cor-verde-escuro);
+  padding: 6rem 2rem;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.introContainer {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--cor-verde-escuro); 
+}
+
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.resultCard {
+  background-color: rgba(0, 54, 45, 0.04); 
+  border-left: 4px solid var(--cor-verde-escuro);
+  padding: 2rem;
+  border-radius: 8px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 0.6s forwards;
+}
+
+
+.resultCard:nth-child(1) { animation-delay: 0.1s; }
+.resultCard:nth-child(2) { animation-delay: 0.2s; }
+.resultCard:nth-child(3) { animation-delay: 0.3s; }
+.resultCard:nth-child(4) { animation-delay: 0.4s; }
+.resultCard:nth-child(5) { animation-delay: 0.5s; }
+.resultCard:nth-child(6) { animation-delay: 0.6s; }
+
+.cardNumber {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--cor-verde-escuro);
+  margin-bottom: 1rem;
+}
+
+.cardText {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
