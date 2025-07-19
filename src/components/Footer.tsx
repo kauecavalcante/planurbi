@@ -5,11 +5,16 @@ export function Footer() {
   return (
     <footer id="footer" className={styles.footerSection}>
       <div className={styles.container}>
-    
+        <div className={styles.mainContact}>
+          <h3>
+            Fale com a gente: <a href="mailto:projeto@planurbi.com.br">projeto@planurbi.com.br</a>
+          </h3>
+        </div>
+
+        
         <div className={styles.realizacaoColumn}>
-          <h3 className={styles.footerTitle}>Realização:</h3>
+          <h4 className={styles.footerTitle}>Realização:</h4>
           <div className={styles.logoWrapper}>
-            
             <Image
               src="/logo-prefeitura-placeholder.png"
               alt="Logo da Prefeitura da Barra de São Miguel"
@@ -21,9 +26,7 @@ export function Footer() {
 
         
         <div className={styles.fepesaColumn}>
-           
           <div className={styles.logoWrapper}>
-            
             <Image
               src="/logo-fepesa-placeholder.png"
               alt="Logo da FEPESA"

@@ -2,6 +2,7 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
 import styles from './Credenciamento.module.css';
 import Image from 'next/image';
+import Link from 'next/link'; 
 import { validaCPF } from '../utils/validators';
 
 interface FormErrors {
@@ -9,6 +10,7 @@ interface FormErrors {
   cpf?: string;
   email?: string;
   telefone?: string;
+  termos?: string; 
 }
 
 export default function CredenciamentoPage() {
@@ -16,6 +18,7 @@ export default function CredenciamentoPage() {
   const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
+  const [termosAceites, setTermosAceites] = useState(false); 
   
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
@@ -29,44 +32,25 @@ export default function CredenciamentoPage() {
     }
   };
 
-  const handleNomeChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setNome(e.target.value);
-    clearError('nome');
-  };
-
+  const handleNomeChange = (e: ChangeEvent<HTMLInputElement>) => { setNome(e.target.value); clearError('nome'); };
   const handleCpfChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, '');
-    const maskedValue = value
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-    setCpf(maskedValue.slice(0, 14));
-    clearError('cpf');
+    const value = e.target.value.replace(/\D/g, '').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    setCpf(value.slice(0, 14)); clearError('cpf');
   };
-
-  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    clearError('email');
-  };
-
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value); clearError('email'); };
   const handleTelefoneChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, '');
-    const maskedValue = value
-      .replace(/(\d{2})(\d)/, '($1) $2')
-      .replace(/(\d{5})(\d)/, '$1-$2');
-    setTelefone(maskedValue.slice(0, 15));
-    clearError('telefone');
+    const value = e.target.value.replace(/\D/g, '').replace(/(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2');
+    setTelefone(value.slice(0, 15)); clearError('telefone');
   };
+  const handleTermosChange = (e: ChangeEvent<HTMLInputElement>) => { setTermosAceites(e.target.checked); clearError('termos'); };
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
     if (!nome) newErrors.nome = "Nome completo é obrigatório.";
-    if (!cpf) newErrors.cpf = "CPF é obrigatório.";
-    else if (!validaCPF(cpf)) newErrors.cpf = "CPF inválido.";
-    if (!email) newErrors.email = "Email é obrigatório.";
-    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email inválido.";
-    if (!telefone) newErrors.telefone = "Telefone é obrigatório.";
-    else if (telefone.replace(/\D/g, '').length < 10) newErrors.telefone = "Telefone inválido.";
+    if (!cpf) newErrors.cpf = "CPF é obrigatório."; else if (!validaCPF(cpf)) newErrors.cpf = "CPF inválido.";
+    if (!email) newErrors.email = "Email é obrigatório."; else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email inválido.";
+    if (!telefone) newErrors.telefone = "Telefone é obrigatório."; else if (telefone.replace(/\D/g, '').length < 10) newErrors.telefone = "Telefone inválido.";
+    if (!termosAceites) newErrors.termos = "Você precisa de aceitar os termos.";
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -74,34 +58,29 @@ export default function CredenciamentoPage() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    if (!validateForm()) {
-      setMessage("Por favor, corrija os erros antes de enviar.");
-      setStatus('error');
-      return;
-    }
+    if (!validateForm()) { setMessage("Por favor, corrija os erros antes de enviar."); setStatus('error'); return; }
     
-    setStatus('loading');
-    setMessage('');
+    setStatus('loading'); setMessage('');
 
     try {
       const response = await fetch('/api/credenciamento', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nome, cpf, email, telefone }),
       });
-
       const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Ocorreu um erro.');
-
-      setStatus('success');
-      setNome(''); setCpf(''); setEmail(''); setTelefone(''); setErrors({});
-    } catch (error) { 
-      setStatus('error');
-      if (error instanceof Error) {
-        setMessage(error.message);
-      } else {
-        setMessage('Ocorreu um erro inesperado.');
+      if (!response.ok) {
+        if (response.status === 409) {
+          if (data.message.includes('CPF')) setErrors(prev => ({ ...prev, cpf: data.message }));
+          else if (data.message.includes('telefone')) setErrors(prev => ({ ...prev, telefone: data.message }));
+        }
+        throw new Error(data.message || 'Ocorreu um erro.');
       }
+      setStatus('success');
+      setNome(''); setCpf(''); setEmail(''); setTelefone(''); setTermosAceites(false); setErrors({});
+    } catch (error) {
+      setStatus('error');
+      if (error instanceof Error) setMessage(error.message);
+      else setMessage('Ocorreu um erro inesperado.');
     }
   };
 
@@ -127,12 +106,12 @@ export default function CredenciamentoPage() {
           <div className={styles.logoWrapper}>
             <Image src="/logo-planurbi.png" alt="Logo PlanUrbi" width={180} height={55} />
           </div>
-          <h2>Plataforma de Planejamento Urbano</h2>
+          <h2>Revisão do Plano Diretor da Barra de São Miguel</h2>
           <p>Faça parte da construção de uma cidade mais inteligente e sustentável.</p>
         </div>
         <div className={styles.formColumn}>
           <div className={styles.header}>
-            <h3>Credenciamento PPUrb</h3>
+            <h3>Credenciamento para a primeira Audiencia Pública do PLano Diretor</h3>
             <p>Preencha os campos para participar.</p>
           </div>
           <form onSubmit={handleSubmit} noValidate>
@@ -164,6 +143,14 @@ export default function CredenciamentoPage() {
               </div>
               {errors.telefone && <span className={styles.fieldErrorMessage}>{errors.telefone}</span>}
             </div>
+            
+            <div className={styles.checkboxGroup}>
+              <input type="checkbox" id="termos" checked={termosAceites} onChange={handleTermosChange} />
+              <label htmlFor="termos">
+                Eu li e concordo com os <Link href="/termos-de-uso" target="_blank">Termos de Uso</Link>.
+              </label>
+            </div>
+            {errors.termos && <span className={styles.fieldErrorMessage}>{errors.termos}</span>}
             
             <button type="submit" disabled={status === 'loading'} className={styles.formButton}>
               {status === 'loading' ? 'Enviando...' : 'Realizar Credenciamento'}

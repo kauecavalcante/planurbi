@@ -1,7 +1,7 @@
 .footerSection {
   background-color: var(--cor-verde-escuro);
   color: #B8BCBD;
-  padding: 5rem 2rem 2rem;
+  padding: 4rem 2rem 2rem;
   border-top: 1px solid rgba(184, 188, 189, 0.2);
 }
 
@@ -9,10 +9,36 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap; 
   justify-content: space-between;
   align-items: flex-start;
   gap: 4rem;
-  flex-wrap: wrap;
+}
+
+
+.mainContact {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(184, 188, 189, 0.1);
+}
+
+.mainContact h3 {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.mainContact a {
+  font-weight: 600;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.mainContact a:hover {
+  opacity: 0.8;
 }
 
 .footerTitle {
@@ -34,11 +60,10 @@
   margin-bottom: 1.5rem;
 }
 
-
 .logoWrapper img {
   width: 180px;
   height: auto;
-  object-fit: contain; 
+  object-fit: contain;
   opacity: 0.9;
   transition: opacity 0.3s ease;
 }
@@ -62,7 +87,7 @@
 
 .copyRight {
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 4rem;
   padding-top: 2rem;
   border-top: 1px solid rgba(184, 188, 189, 0.1);
 }
@@ -71,7 +96,6 @@
   font-size: 0.9rem;
   opacity: 0.7;
 }
-
 
 @media (max-width: 768px) {
   .container {

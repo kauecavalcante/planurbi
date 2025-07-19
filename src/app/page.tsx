@@ -1,3 +1,4 @@
+import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { AboutSection } from "@/components/AboutSection";
 import { ObjectiveSection } from "@/components/ObjectiveSection";
@@ -11,6 +12,7 @@ import { Footer } from "@/components/Footer";
 export default function HomePage() {
   return (
     <>
+      <Header />
       <main>
         <Hero />
         <AboutSection />
