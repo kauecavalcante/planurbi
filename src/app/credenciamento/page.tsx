@@ -2,8 +2,7 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
 import styles from './Credenciamento.module.css';
 import Image from 'next/image';
-import { validaCPF } from '../utils/validators'; 
-
+import { validaCPF } from '../utils/validators';
 
 interface FormErrors {
   nome?: string;
@@ -22,7 +21,6 @@ export default function CredenciamentoPage() {
   const [message, setMessage] = useState('');
   const [errors, setErrors] = useState<FormErrors>({});
 
-  
   const clearError = (fieldName: keyof FormErrors) => {
     if (errors[fieldName]) {
       const newErrors = { ...errors };
@@ -31,7 +29,6 @@ export default function CredenciamentoPage() {
     }
   };
 
-  
   const handleNomeChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNome(e.target.value);
     clearError('nome');
@@ -98,9 +95,13 @@ export default function CredenciamentoPage() {
 
       setStatus('success');
       setNome(''); setCpf(''); setEmail(''); setTelefone(''); setErrors({});
-    } catch (error: any) {
+    } catch (error) { 
       setStatus('error');
-      setMessage(error.message);
+      if (error instanceof Error) {
+        setMessage(error.message);
+      } else {
+        setMessage('Ocorreu um erro inesperado.');
+      }
     }
   };
 
@@ -126,12 +127,12 @@ export default function CredenciamentoPage() {
           <div className={styles.logoWrapper}>
             <Image src="/logo-planurbi.png" alt="Logo PlanUrbi" width={180} height={55} />
           </div>
-          <h2>Revisão do Plano Diretor da Barra de São Miguel</h2>
-          <p>Sua participação é muito importante para construirmos juntos o futuro da nossa cidade!</p>
+          <h2>Plataforma de Planejamento Urbano</h2>
+          <p>Faça parte da construção de uma cidade mais inteligente e sustentável.</p>
         </div>
         <div className={styles.formColumn}>
           <div className={styles.header}>
-            <h3>Credenciamento para a primeira Audiencia Pública do PLano Diretor</h3>
+            <h3>Credenciamento PPUrb</h3>
             <p>Preencha os campos para participar.</p>
           </div>
           <form onSubmit={handleSubmit} noValidate>
