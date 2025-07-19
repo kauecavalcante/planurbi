@@ -8,112 +8,56 @@
 .container {
   max-width: 900px;
   margin: 0 auto;
-}
-
-.introContainer {
-  text-align: center;
-  margin-bottom: 4rem;
+  text-align: center; 
 }
 
 .sectionTitle {
   font-family: var(--font-heading);
   font-size: clamp(2.2rem, 5vw, 3rem);
   font-weight: 800;
+  margin-bottom: 3rem;
 }
 
 
-.timeline {
-  position: relative;
+.announcementText {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  text-align: left;
+  font-weight: 400;
+  max-width: 750px; 
+  margin: 0 auto 3rem auto; 
+}
+
+
+.details {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.6); 
+  border: 1px solid rgba(0, 54, 45, 0.1);
   display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  text-align: center;
 }
 
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 20px;
-  left: 24px;
-  bottom: 20px;
-  width: 4px;
-  background-color: rgba(0, 54, 45, 0.15);
-  border-radius: 2px;
-}
-
-.timelineItem {
-  position: relative;
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-
-.timelineMarker {
-  flex-shrink: 0;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background-color: var(--cor-verde-escuro);
-  color: var(--cor-azul-claro);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.2rem;
-  z-index: 1;
-}
-
-.timelineContent {
-  padding-top: 0.5rem;
-}
-
-.cardTitle {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-}
-
-.cardDescription {
+.detailItem {
   font-family: var(--font-body);
   font-size: 1.1rem;
-  line-height: 1.7;
-  max-width: 600px;
+}
+
+.detailItem strong {
+  font-weight: 700;
+  margin-right: 0.5rem;
 }
 
 
-.subList {
-  list-style: none;
-  padding: 0;
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.subList li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-
-.checkmarkIcon {
-  flex-shrink: 0;
-  margin-top: 5px;
-  width: 18px;
-  height: 18px;
-  color: var(--cor-verde-escuro);
-}
-
-
-@media (max-width: 768px) {
-  .timeline::before {
-    left: 26px;
+@media (max-width: 640px) {
+  .details {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
 }

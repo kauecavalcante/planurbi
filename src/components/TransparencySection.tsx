@@ -5,7 +5,7 @@ export function TransparencySection() {
     <section id="transparency" className={styles.transparencySection}>
       <div className={styles.container}>
         <div className={styles.introContainer}>
-          <h2 className={styles.sectionTitle}>Transparência</h2>
+          <h2 className={styles.sectionTitle}>Acesse a Documentação Produzida</h2>
           <p className={styles.sectionParagraph}>
             Aqui serão disponibilizados arquivos e planilhas para download.
           </p>

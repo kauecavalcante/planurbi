@@ -6,7 +6,6 @@ const beneficios = [
   "Crescimento urbano ordenado e inclusivo",
   "Qualidade de vida para moradores e visitantes",
   "Segurança jurídica para investimentos",
-  "Atração de novos negócios e valorização imobiliária",
   "Sustentabilidade ambiental e adaptação às mudanças climáticas",
 ];
 
@@ -15,7 +14,7 @@ export function BenefitsSection() {
     <section id="benefits" className={styles.benefitsSection}>
       <div className={styles.container}>
         <div className={styles.introContainer}>
-          <h2 className={styles.sectionTitle}>Benefícios para a Cidade</h2>
+          <h2 className={styles.sectionTitle}>O que se espera para a Cidade</h2>
         </div>
 
         <div className={styles.benefitsGrid}>

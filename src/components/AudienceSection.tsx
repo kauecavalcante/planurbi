@@ -16,7 +16,7 @@ export function AudienceSection() {
       <div className={styles.introContainer}>
         <h2 className={styles.sectionTitle}>Para quem é?</h2>
         <p className={styles.sectionParagraph}>
-          O PPUrb é voltado para:
+          O PlanUrbi é voltado para:
         </p>
       </div>
 

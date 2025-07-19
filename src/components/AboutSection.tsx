@@ -8,30 +8,27 @@ const diferenciais = [
     description: "Georreferenciamento com drones e coleta detalhada em campo.",
   },
   {
-    iconClass: 'bxs-layer',
-    title: "Plataforma Digital de Gestão",
-    description: "Ferramenta interativa para consulta e gestão territorial.",
-  },
-  {
     iconClass: 'bxs-file-doc', 
     title: "Legislação Moderna",
     description: "Revisão completa do Plano Diretor e das leis urbanística e tributária.",
   },
   {
-    iconClass: 'bxs-direction-right',
-    title: "Mobilidade Inteligente",
-    description: "Plano alinhado à realidade da cidade e ao turismo sustentável.",
-  },
-  {
     iconClass: 'bxs-user-voice', 
     title: "Participação Comunitária",
-    description: "Envolvimento ativo da comunidade em todas as etapas do processo.",
+    description: "Envolvimento ativo da comunidade em todas as etapas do processo, audiencias públicas e oficinas participativas.",
   },
   {
     iconClass: 'bxs-group',
     title: "Equipe Multidisciplinar",
     description: "Especialistas com vasta experiência nacional em planejamento urbano.",
   },
+  {
+    iconClass: 'bxs-analyse',
+    title: "Diagnostico Inteligente ",
+    description: "Análise dos aspectos  físico-ambientais,  socioespaciais, culturais e econômicos do Município",
+  },
+  
+
 ];
 
 export function AboutSection() {
@@ -39,12 +36,12 @@ export function AboutSection() {
     <section id="about" className={styles.aboutSection}>
       <div className={styles.container}>
         <div className={styles.introBlock}>
-          <h2 className={styles.sectionTitle}>O que é o PPUrb?</h2>
+          <h2 className={styles.sectionTitle}>Revisão do Plano Diretor</h2>
           <p className={styles.sectionParagraph}>
-            O PPUrb - Programa de Planejamento Urbano da Barra de São Miguel é uma iniciativa da FEPESA que reúne tecnologia, inteligência territorial e participação social para modernizar a gestão da cidade e torná-la referência em desenvolvimento urbano sustentável.
+            Os Planos Diretores definem estratégias para o ordenamento territorial e para políticas setoriais que precisam ser incorporadas pela gestão pública e nos principais instrumentos do orçamento municipal. 
           </p>
           <p className={styles.sectionParagraph}>
-            O projeto vai atualizar os principais instrumentos urbanísticos e criar ferramentas digitais para apoiar decisões estratégicas, com foco na justiça fiscal, mobilidade eficiente, uso racional do solo e valorização do patrimônio local.
+           Devido à necessidade de atualização e reestruturação da política urbana do município, iniciou-se a revisão do Plano Diretor Municipal da Barra de São Miguel em junho de 2025.
           </p>
         </div>
 
