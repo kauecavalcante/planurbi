@@ -111,7 +111,7 @@ export default function CredenciamentoPage() {
         </div>
         <div className={styles.formColumn}>
           <div className={styles.header}>
-            <h3>Credenciamento para a primeira Audiencia Pública do PLano Diretor</h3>
+            <h3>Credenciamento para a primeira Audiencia Pública do Plano Diretor</h3>
             <p>Preencha os campos para participar.</p>
           </div>
           <form onSubmit={handleSubmit} noValidate>
