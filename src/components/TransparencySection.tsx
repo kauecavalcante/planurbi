@@ -7,7 +7,7 @@ export function TransparencySection() {
         <div className={styles.introContainer}>
           <h2 className={styles.sectionTitle}>Acesse a Documentação Produzida</h2>
           <p className={styles.sectionParagraph}>
-            Aqui serão disponibilizados arquivos e planilhas para download.
+            Aqui serão disponibilizados todos os documentos para download.
           </p>
         </div>
 

@@ -15,7 +15,7 @@ export function HowItWorksSection() {
             <strong>Data:</strong> 22 de julho
           </div>
           <div className={styles.detailItem}>
-            <strong>Horário:</strong> 8h as 12h
+            <strong>Horário:</strong> 8h às 12h
           </div>
           <div className={styles.detailItem}>
             <strong>Local:</strong> Village Barra Hotel

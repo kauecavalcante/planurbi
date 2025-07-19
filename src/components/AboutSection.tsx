@@ -10,12 +10,12 @@ const diferenciais = [
   {
     iconClass: 'bxs-file-doc', 
     title: "Legislação Moderna",
-    description: "Revisão completa do Plano Diretor e das leis urbanística e tributária.",
+    description: "Revisão completa da legislação urbanística.",
   },
   {
     iconClass: 'bxs-user-voice', 
     title: "Participação Comunitária",
-    description: "Envolvimento ativo da comunidade em todas as etapas do processo, audiencias públicas e oficinas participativas.",
+    description: "Envolvimento ativo da comunidade em todas as etapas do processo, com a realização de audiências públicas, seminários setoriais e oficinas participativas.",
   },
   {
     iconClass: 'bxs-group',
@@ -24,8 +24,8 @@ const diferenciais = [
   },
   {
     iconClass: 'bxs-analyse',
-    title: "Diagnostico Inteligente ",
-    description: "Análise dos aspectos  físico-ambientais,  socioespaciais, culturais e econômicos do Município",
+    title: "Diagnóstico Inteligente ",
+    description: "Análise dos aspectos  físico-ambientais,  socioespaciais, culturais e econômicos do Município.",
   },
   
 
