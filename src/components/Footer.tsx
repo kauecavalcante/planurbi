@@ -21,7 +21,7 @@ export function Footer() {
 
         
         <div className={styles.fepesaColumn}>
-           <h3 className={styles.footerTitle}>Realização:</h3>
+           
           <div className={styles.logoWrapper}>
             
             <Image
