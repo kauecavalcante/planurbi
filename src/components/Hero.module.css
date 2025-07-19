@@ -5,23 +5,30 @@
   min-height: 100vh;
   padding: 2rem;
   overflow: hidden;
+  background-color: var(--cor-verde-escuro);
+  color: var(--cor-bege);
 }
 
 
 .backgroundImage {
   position: absolute;
-  z-index: 0; 
-  opacity: 0.15;
-  pointer-events: none; 
+  z-index: 0;
+  opacity: 0.1; 
+  pointer-events: none;
+}
+
+
+.backgroundImage img {
+  filter: brightness(0) invert(1) sepia(100%) hue-rotate(180deg) saturate(500%);
 }
 
 .mapa {
   width: 40vw;
   max-width: 500px;
-  aspect-ratio: 1.6 / 1; 
+  aspect-ratio: 1.6 / 1;
   height: auto;
   bottom: -5%;
-  right: -5%; 
+  right: -5%;
 }
 
 .forma {
@@ -33,6 +40,7 @@
   right: -10%;
   transform: rotate(15deg);
 }
+
 
 .container {
   position: relative;
@@ -50,8 +58,9 @@
   margin-bottom: 4rem;
 }
 
+
 .logoImage {
-  height: auto; 
+  height: auto;
 }
 
 .mainHeadline {
@@ -60,6 +69,7 @@
   font-weight: 800;
   line-height: 1.15;
   margin-bottom: 2.5rem;
+  color: var(--cor-bege);
 }
 
 .textBlock {
@@ -76,7 +86,6 @@
 .paragraph:not(:last-child) {
   margin-bottom: 1.5rem;
 }
-
 
 @media (max-width: 768px) {
   .contentWrapper {

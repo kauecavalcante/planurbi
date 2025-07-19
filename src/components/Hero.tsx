@@ -29,7 +29,7 @@ export function Hero() {
         <div className={styles.contentWrapper}>
           <div className={styles.logoContainer}>
             <Image
-              src="/logo-planurbi.png"
+              src="/logo-planurbi-azul.png"
               alt="Logo PlanUrbi"
               width={220}
               height={65}
