@@ -4,7 +4,7 @@ import styles from './Relatorios.module.css';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
-// Tipagem atualizada para incluir os novos campos
+// Tipagem para os dados dos participantes
 interface Participante {
   nome: string;
   telefone: string;
@@ -18,7 +18,6 @@ declare module 'jspdf' {
   }
 }
 
-// O componente agora é exportado diretamente, sem o wrapper de autenticação
 export default function RelatoriosPage() {
   const [participantes, setParticipantes] = useState<Participante[]>([]);
   const [loading, setLoading] = useState(true);
@@ -31,8 +30,8 @@ export default function RelatoriosPage() {
         if (!response.ok) throw new Error('Falha ao carregar os dados.');
         const data = await response.json();
         setParticipantes(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Ocorreu um erro.');
+      } catch (err) { 
+        setError(err instanceof Error ? err.message : 'Ocorreu um erro inesperado.');
       } finally {
         setLoading(false);
       }
@@ -49,7 +48,6 @@ export default function RelatoriosPage() {
     doc.text(`Total de Participantes: ${participantes.length}`, 14, 30);
     doc.text(`Gerado em: ${new Date().toLocaleDateString('pt-BR')}`, 14, 36);
     
-  
     autoTable(doc, {
       startY: 45,
       head: [['Nº', 'Nome Completo', 'Telefone', 'Email', 'Data de Credenciamento']],
