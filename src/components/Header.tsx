@@ -37,7 +37,7 @@ export function Header() {
        
         <nav className={styles.navDesktop}>
           <Link href="/">Início</Link>
-          <Link href="/credenciamento">Credenciamento</Link>
+          <Link href="/noticias">Notícias</Link>
         </nav>
 
         
@@ -48,7 +48,7 @@ export function Header() {
        
         <nav className={`${styles.navMobile} ${isMenuOpen ? styles.open : ''}`}>
           <Link href="/" onClick={toggleMenu}>Início</Link>
-          <Link href="/credenciamento" onClick={toggleMenu}>Credenciamento</Link>
+          <Link href="/noticias" onClick={toggleMenu}>Notícias</Link>
         </nav>
       </div>
     </header>

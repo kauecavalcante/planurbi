@@ -20,7 +20,8 @@ const db = admin.firestore();
 export async function GET() {
   try {
     const credenciadosRef = db.collection('credenciados');
-    const snapshot = await credenciadosRef.orderBy('nome').get();
+    
+    const snapshot = await credenciadosRef.orderBy('created_at', 'desc').get();
 
     if (snapshot.empty) {
       return NextResponse.json([], { status: 200 });
@@ -28,9 +29,19 @@ export async function GET() {
 
     const participantes = snapshot.docs.map(doc => {
       const data = doc.data();
+      
+      const createdAtTimestamp = data.created_at;
+      const createdAtDate = createdAtTimestamp.toDate();
+      const formattedDate = new Intl.DateTimeFormat('pt-BR', {
+        dateStyle: 'short',
+        timeStyle: 'medium',
+      }).format(createdAtDate);
+
       return {
         nome: data.nome,
         telefone: data.telefone,
+        email: data.email,
+        created_at: formattedDate, 
       };
     });
 

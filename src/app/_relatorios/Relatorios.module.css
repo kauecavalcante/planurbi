@@ -1,0 +1,130 @@
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: var(--cor-azul-claro);
+  padding: 4rem 2rem;
+}
+
+.contentCard {
+  background-color: #FFFFFF;
+  color: var(--cor-verde-escuro);
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 900px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-bottom: 2.5rem;
+}
+
+/* Novo card de resumo */
+.summaryCard {
+  background-color: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summaryCard h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.summaryCard span {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--cor-verde-escuro);
+}
+
+.pdfButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  background-color: var(--cor-verde-escuro);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  margin-bottom: 2rem;
+}
+
+.pdfButton i {
+  font-size: 1.2rem;
+}
+
+.pdfButton:hover:not(:disabled) {
+  background-color: #004A3F;
+  transform: translateY(-2px);
+}
+
+.pdfButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #DC2626;
+  font-weight: 500;
+}
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+}
+
+.tableContainer table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableContainer th,
+.tableContainer td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+
+.tableContainer th:first-child,
+.tableContainer td:first-child {
+  width: 50px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.tableContainer thead th {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  background-color: #F9FAFB;
+}
+
+.tableContainer tbody tr:last-child td {
+  border-bottom: none;
+}
