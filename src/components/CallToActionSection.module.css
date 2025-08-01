@@ -95,8 +95,12 @@
   .container {
     flex-direction: column;
     text-align: center;
+    justify-content: center;
   }
   .textColumn {
     align-items: center;
+  }
+  .qrColumn {
+    display: none;
   }
 }

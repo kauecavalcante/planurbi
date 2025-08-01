@@ -1,0 +1,121 @@
+.workshopsSection {
+  background-color: var(--cor-bege);
+  color: var(--cor-verde-escuro);
+  padding: 6rem 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 800;
+}
+
+.workshopsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.workshopCard {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative; 
+  transition: transform 0.3s ease;
+}
+
+.workshopCard:hover {
+  transform: translateY(-5px);
+}
+
+
+.statusTag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.statusTag.proxima {
+  background-color: var(--cor-azul-claro);
+  color: var(--cor-verde-escuro);
+}
+
+.statusTag.encerrada {
+  background-color: #E5E7EB;
+  color: #6B7280;
+}
+
+
+.workshopCard.encerrada {
+  opacity: 0.7;
+  background-color: #F9FAFB;
+}
+
+.cardHeader {
+  background-color: var(--cor-verde-escuro);
+  color: #FFFFFF;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.date {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.25rem;
+  opacity: 0.9;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.cardBody {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex-grow: 1;
+}
+
+.detailItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.detailItem i {
+  font-size: 1.5rem;
+  margin-top: 2px;
+  color: var(--cor-verde-escuro);
+  opacity: 0.8;
+}
+
+.detailItem strong {
+  font-weight: 700;
+}

@@ -5,7 +5,7 @@ import { Hero } from "@/components/Hero";
 import { AboutSection } from "@/components/AboutSection";
 import { ObjectiveSection } from "@/components/ObjectiveSection";
 import { AudienceSection } from "@/components/AudienceSection";
-import { HowItWorksSection } from "@/components/HowItWorksSection";
+import { WorkshopsSection } from "@/components/WorkshopsSection"; 
 import { ExpectedResultsSection } from "@/components/ExpectedResultsSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
 import { TransparencySection } from "@/components/TransparencySection";
@@ -45,9 +45,9 @@ export default function HomePage() {
         
         <CallToActionSection formUrl={formUrl} /> 
         <AboutSection />
+        <WorkshopsSection /> 
         <ObjectiveSection />
         <AudienceSection />
-        <HowItWorksSection />
         <ExpectedResultsSection />
         <BenefitsSection />
         <TransparencySection />
