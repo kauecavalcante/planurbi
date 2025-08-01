@@ -11,11 +11,6 @@ interface Participante {
   created_at: string;
 }
 
-declare module 'jspdf' {
-  interface jsPDF {
-    autoTable: (options: any) => jsPDF;
-  }
-}
 
 export default function RelatorioSeminarioPage() {
   const [participantes, setParticipantes] = useState<Participante[]>([]);
@@ -29,7 +24,7 @@ export default function RelatorioSeminarioPage() {
         if (!response.ok) throw new Error('Falha ao carregar os dados.');
         const data = await response.json();
         setParticipantes(data);
-      } catch (err) { 
+      } catch (err) {
         setError(err instanceof Error ? err.message : 'Ocorreu um erro inesperado.');
       } finally {
         setLoading(false);
