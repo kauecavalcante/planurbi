@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "PlanUrbi - Barra de São Miguel",
+  title: "PlanUrbi",
   description: "Planejamento urbano integrado para uma cidade mais inclusiva, moderna e eficiente.",
 };
 
