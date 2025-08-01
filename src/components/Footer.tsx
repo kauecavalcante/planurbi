@@ -16,7 +16,7 @@ export function Footer() {
           <h4 className={styles.footerTitle}>Realização:</h4>
           <div className={styles.logoWrapper}>
             <Image
-              src="/logo-prefeitura-placeholder.png"
+              src="/logo-prefeitura-placeholder.png" 
               alt="Logo da Prefeitura da Barra de São Miguel"
               width={180}
               height={75}

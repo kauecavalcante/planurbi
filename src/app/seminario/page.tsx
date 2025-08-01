@@ -1,0 +1,146 @@
+"use client";
+import { useState, FormEvent, ChangeEvent } from 'react';
+import styles from './Seminario.module.css';
+import Image from 'next/image';
+import Link from 'next/link';
+import { validaCPF } from '../utils/validators';
+
+interface FormErrors {
+  nome?: string;
+  cpf?: string;
+  email?: string;
+  telefone?: string;
+  termos?: string;
+}
+
+export default function SeminarioPage() {
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [termosAceites, setTermosAceites] = useState(false);
+  
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const clearError = (fieldName: keyof FormErrors) => {
+    if (errors[fieldName]) {
+      const newErrors = { ...errors };
+      delete newErrors[fieldName];
+      setErrors(newErrors);
+    }
+  };
+
+  const handleNomeChange = (e: ChangeEvent<HTMLInputElement>) => { setNome(e.target.value); clearError('nome'); };
+  const handleCpfChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    setCpf(value.slice(0, 14)); clearError('cpf');
+  };
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value); clearError('email'); };
+  const handleTelefoneChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '').replace(/(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2');
+    setTelefone(value.slice(0, 15)); clearError('telefone');
+  };
+  const handleTermosChange = (e: ChangeEvent<HTMLInputElement>) => { setTermosAceites(e.target.checked); clearError('termos'); };
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+    if (!nome) newErrors.nome = "Nome completo é obrigatório.";
+    if (!cpf) newErrors.cpf = "CPF é obrigatório."; else if (!validaCPF(cpf)) newErrors.cpf = "CPF inválido.";
+    if (!email) newErrors.email = "Email é obrigatório."; else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email inválido.";
+    if (!telefone) newErrors.telefone = "Telefone é obrigatório."; else if (telefone.replace(/\D/g, '').length < 10) newErrors.telefone = "Telefone inválido.";
+    if (!termosAceites) newErrors.termos = "Você precisa de aceitar os termos.";
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    if (!validateForm()) { setMessage("Por favor, corrija os erros antes de enviar."); setStatus('error'); return; }
+    
+    setStatus('loading'); setMessage('');
+
+    try {
+      const response = await fetch('/api/seminario', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, cpf, email, telefone }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        if (response.status === 409) {
+          if (data.message.includes('CPF')) setErrors(prev => ({ ...prev, cpf: data.message }));
+          else if (data.message.includes('telefone')) setErrors(prev => ({ ...prev, telefone: data.message }));
+        }
+        throw new Error(data.message || 'Ocorreu um erro.');
+      }
+      setStatus('success');
+      setNome(''); setCpf(''); setEmail(''); setTelefone(''); setTermosAceites(false); setErrors({});
+    } catch (error) {
+      setStatus('error');
+      if (error instanceof Error) setMessage(error.message);
+      else setMessage('Ocorreu um erro inesperado.');
+    }
+  };
+
+  if (status === 'success') {
+    return (
+      <div className={styles.pageContainer}>
+        <div className={styles.successMessage}>
+          <i className='bx bxs-check-circle'></i>
+          <h2>Inscrição Realizada com Sucesso!</h2>
+          <p>A sua vaga no seminário está confirmada. Aguardamos por você!</p>
+          <button onClick={() => setStatus('idle')} className={styles.formButton}>
+            Nova Inscrição
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.pageContainer}>
+      <div className={styles.formCard}>
+        <div className={styles.brandingColumn}>
+          <div className={styles.logoWrapper}>
+            <Image src="/logo-planurbi.png" alt="Logo PlanUrbi" width={180} height={55} />
+          </div>
+          <h2>I Seminário PlanUrbi</h2>
+          <p>Planejamento territorial: suas implicações e correspondências.</p>
+          <div className={styles.eventDetails}>
+            <span><i className='bx bxs-calendar'></i> 13/08/2025</span>
+            <span><i className='bx bxs-time-five'></i> 14:00 às 18:00</span>
+            <span><i className='bx bxs-map'></i> Auditório CREA</span>
+          </div>
+        </div>
+        <div className={styles.formColumn}>
+          <div className={styles.header}>
+            <h3>Formulário de Inscrição</h3>
+            <p>Garanta a sua vaga preenchendo os campos abaixo.</p>
+          </div>
+          <form onSubmit={handleSubmit} noValidate>
+            <div className={styles.inputGroup}><div className={styles.inputWrapper}> <i className='bx bxs-user'></i> <input type="text" value={nome} onChange={handleNomeChange} placeholder="Nome Completo" required className={errors.nome ? styles.inputError : ''} /> </div>{errors.nome && <span className={styles.fieldErrorMessage}>{errors.nome}</span>}</div>
+            <div className={styles.inputGroup}><div className={styles.inputWrapper}> <i className='bx bxs-id-card'></i> <input type="text" value={cpf} onChange={handleCpfChange} placeholder="CPF" required className={errors.cpf ? styles.inputError : ''} /> </div>{errors.cpf && <span className={styles.fieldErrorMessage}>{errors.cpf}</span>}</div>
+            <div className={styles.inputGroup}><div className={styles.inputWrapper}> <i className='bx bxs-envelope'></i> <input type="email" value={email} onChange={handleEmailChange} placeholder="Email" required className={errors.email ? styles.inputError : ''} /> </div>{errors.email && <span className={styles.fieldErrorMessage}>{errors.email}</span>}</div>
+            <div className={styles.inputGroup}><div className={styles.inputWrapper}> <i className='bx bxs-phone'></i> <input type="tel" value={telefone} onChange={handleTelefoneChange} placeholder="Telefone" required className={errors.telefone ? styles.inputError : ''} /> </div>{errors.telefone && <span className={styles.fieldErrorMessage}>{errors.telefone}</span>}</div>
+            
+            <div className={styles.checkboxGroup}>
+              <input type="checkbox" id="termos" checked={termosAceites} onChange={handleTermosChange} />
+              <label htmlFor="termos">
+                Eu li e concordo com os <Link href="/termos-seminario" target="_blank">Termos de Uso</Link>.
+              </label>
+            </div>
+            {errors.termos && <span className={styles.fieldErrorMessage}>{errors.termos}</span>}
+            
+            <button type="submit" disabled={status === 'loading'} className={styles.formButton}>
+              {status === 'loading' ? 'Aguarde...' : 'Confirmar Inscrição'}
+            </button>
+
+            {status === 'error' && message && <p className={styles.formErrorMessage}>{message}</p>}
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
