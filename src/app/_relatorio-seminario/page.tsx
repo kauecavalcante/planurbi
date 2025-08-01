@@ -25,12 +25,11 @@ export default function RelatorioSeminarioPage() {
   useEffect(() => {
     const fetchParticipantes = async () => {
       try {
-       
         const response = await fetch('/api/seminario-participantes');
         if (!response.ok) throw new Error('Falha ao carregar os dados.');
         const data = await response.json();
         setParticipantes(data);
-      } catch (err) {
+      } catch (err) { 
         setError(err instanceof Error ? err.message : 'Ocorreu um erro inesperado.');
       } finally {
         setLoading(false);
