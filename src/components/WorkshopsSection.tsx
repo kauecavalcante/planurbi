@@ -2,6 +2,18 @@
 import { useEffect, useState } from 'react';
 import styles from './WorkshopsSection.module.css';
 
+interface Oficina {
+  dataCompleta: string;
+  data: string;
+  titulo: string;
+  local: string;
+  bairro: string;
+  horario: string;
+  status: {
+    text: string;
+    className: string;
+  } | null;
+}
 
 const oficinasData = [
   {
@@ -38,7 +50,6 @@ const oficinasData = [
   },
 ];
 
-
 const getOficinaStatus = (oficinaDate: Date, proximaOficinaDate: Date | null) => {
   const agora = new Date();
   if (oficinaDate < agora) {
@@ -47,11 +58,12 @@ const getOficinaStatus = (oficinaDate: Date, proximaOficinaDate: Date | null) =>
   if (proximaOficinaDate && oficinaDate.getTime() === proximaOficinaDate.getTime()) {
     return { text: 'Próxima', className: styles.proxima };
   }
-  return null; 
+  return null;
 };
 
 export function WorkshopsSection() {
-  const [oficinasComStatus, setOficinasComStatus] = useState<any[]>([]);
+
+  const [oficinasComStatus, setOficinasComStatus] = useState<Oficina[]>([]);
 
   useEffect(() => {
     const agora = new Date();
