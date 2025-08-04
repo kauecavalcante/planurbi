@@ -14,7 +14,6 @@ export function Header() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
     handleScroll(); 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -26,9 +25,9 @@ export function Header() {
       <div className={styles.container}>
         <Link href="/" className={`${styles.logo} ${isScrolled ? styles.visible : ''}`}>
           <Image
-            src="/icon-azul.png"
+            src="/logo-planurbi.png"
             alt="Logo PlanUrbi"
-            width={70}
+            width={150}
             height={45}
             priority
           />
@@ -37,6 +36,7 @@ export function Header() {
        
         <nav className={styles.navDesktop}>
           <Link href="/">Início</Link>
+          <Link href="/seminario">Seminário</Link> 
           <Link href="/noticias">Notícias</Link>
         </nav>
 
@@ -45,9 +45,10 @@ export function Header() {
           <i className={isMenuOpen ? 'bx bx-x' : 'bx bx-menu'}></i>
         </button>
 
-       
+        
         <nav className={`${styles.navMobile} ${isMenuOpen ? styles.open : ''}`}>
           <Link href="/" onClick={toggleMenu}>Início</Link>
+          <Link href="/seminario" onClick={toggleMenu}>Seminário</Link> 
           <Link href="/noticias" onClick={toggleMenu}>Notícias</Link>
         </nav>
       </div>
