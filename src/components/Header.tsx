@@ -25,22 +25,22 @@ export function Header() {
       <div className={styles.container}>
         <Link href="/" className={`${styles.logo} ${isScrolled ? styles.visible : ''}`}>
           <Image
-            src="/logo-planurbi.png"
+            src="/icon-azul.png"
             alt="Logo PlanUrbi"
-            width={150}
+            width={70}
             height={45}
             priority
           />
         </Link>
 
-       
+        
         <nav className={styles.navDesktop}>
           <Link href="/">Início</Link>
-          <Link href="/seminario">Seminário</Link> 
+          <Link href="/seminario">Seminário</Link>
           <Link href="/noticias">Notícias</Link>
         </nav>
 
-        
+       
         <button className={styles.hamburger} onClick={toggleMenu} aria-label="Abrir menu">
           <i className={isMenuOpen ? 'bx bx-x' : 'bx bx-menu'}></i>
         </button>
@@ -48,7 +48,7 @@ export function Header() {
         
         <nav className={`${styles.navMobile} ${isMenuOpen ? styles.open : ''}`}>
           <Link href="/" onClick={toggleMenu}>Início</Link>
-          <Link href="/seminario" onClick={toggleMenu}>Seminário</Link> 
+          <Link href="/seminario" onClick={toggleMenu}>Seminário</Link>
           <Link href="/noticias" onClick={toggleMenu}>Notícias</Link>
         </nav>
       </div>
