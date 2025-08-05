@@ -19,25 +19,39 @@ interface StepProps {
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
+const initialFormData: FormData = {
+  nome: '', data_nascimento: '', rg: '', cep: '', rua: '', numero: '',
+  complemento: '', cidade: '', estado: '', tipo_instituicao: '',
+  instituicao: '', serie_ano: '',
+};
+
 
 export default function SelecaoPage() {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState<FormData>({
-    nome: '', data_nascimento: '', rg: '', cep: '', rua: '', numero: '', 
-    complemento: '', cidade: '', estado: '', tipo_instituicao: '', 
-    instituicao: '', serie_ano: '',
-  });
+  const [formData, setFormData] = useState<FormData>(initialFormData);
   const [editalAceite, setEditalAceite] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<FormErrors>({});
   const [cepLoading, setCepLoading] = useState(false);
 
-  
+  const resetForm = () => {
+    setFormData(initialFormData);
+    setEditalAceite(false);
+    setStatus('idle');
+    setStep(1);
+    setErrors({});
+  };
+
   const validateStep = () => {
     const newErrors: FormErrors = {};
     if (step === 1) {
       if (!formData.nome) newErrors.nome = "Nome é obrigatório.";
-      if (!formData.data_nascimento) newErrors.data_nascimento = "Data de Nascimento é obrigatória.";
+     
+      if (!formData.data_nascimento) {
+        newErrors.data_nascimento = "Data de Nascimento é obrigatória.";
+      } else if (formData.data_nascimento.length < 10) {
+        newErrors.data_nascimento = "Por favor, insira a data completa (DD/MM/AAAA).";
+      }
       if (!formData.rg) newErrors.rg = "RG é obrigatório.";
     } else if (step === 2) {
       if (!formData.cep) newErrors.cep = "CEP é obrigatório.";
@@ -58,7 +72,7 @@ export default function SelecaoPage() {
   const nextStep = () => { if (validateStep()) setStep(prev => prev + 1); };
   const prevStep = () => setStep(prev => prev - 1);
 
-  
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setFormData(prev => ({ ...prev, [id]: value }));
@@ -73,7 +87,7 @@ export default function SelecaoPage() {
     setFormData(prev => ({ ...prev, data_nascimento: maskedValue.slice(0, 10) }));
     if (errors.data_nascimento) clearError('data_nascimento');
   };
-  
+
   const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({...prev, tipo_instituicao: e.target.value as InstituicaoTipo}));
     clearError('tipo_instituicao');
@@ -102,32 +116,44 @@ export default function SelecaoPage() {
       }
     }
   };
-  
+
   const clearError = (fieldName: keyof FormErrors) => {
     const newErrors = { ...errors };
     delete newErrors[fieldName];
     setErrors(newErrors);
   };
 
-  
+
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     if (!validateStep()) return;
     setStatus('loading');
+    setErrors({});
+
     try {
       const response = await fetch('/api/selecao-campo', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
+
       const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Ocorreu um erro.');
+
+      if (!response.ok) {
+        if (response.status === 409) {
+          setErrors({ rg: data.message });
+          setStep(1);
+        }
+        throw new Error(data.message || 'Ocorreu um erro.');
+      }
+
       setStatus('success');
     } catch (error) {
       setStatus('error');
     }
   };
 
-  
+
   if (status === 'success') {
     return (
       <div className={styles.pageContainer}>
@@ -135,7 +161,7 @@ export default function SelecaoPage() {
           <i className='bx bxs-check-circle'></i>
           <h2>Inscrição Realizada com Sucesso!</h2>
           <p>A sua inscrição foi recebida. Entraremos em contacto em breve.</p>
-          <button onClick={() => { setStatus('idle'); setStep(1); }} className={styles.formButton}>
+          <button onClick={resetForm} className={styles.formButton}>
             Nova Inscrição
           </button>
         </div>
@@ -152,12 +178,18 @@ export default function SelecaoPage() {
           <p>Faça parte da equipa que irá transformar o futuro da Barra de São Miguel.</p>
         </div>
         <div className={styles.formColumn}>
+          <div className={styles.mobileHeader}>
+            <Image src="/logo-planurbi.png" alt="Logo PlanUrbi" width={140} height={43} />
+            <h2>Seleção de Equipe de Campo</h2>
+            <p>Preencha os seus dados para participar.</p>
+          </div>
+
           <Stepper currentStep={step} />
           <form onSubmit={handleSubmit} noValidate>
             {step === 1 && <Step1 formData={formData} errors={errors} handleChange={handleChange} handleDataNascimentoChange={handleDataNascimentoChange} />}
             {step === 2 && <Step2 formData={formData} errors={errors} handleChange={handleChange} handleCepChange={handleCepChange} cepLoading={cepLoading} />}
             {step === 3 && <Step3 formData={formData} errors={errors} handleChange={handleChange} handleRadioChange={handleRadioChange} editalAceite={editalAceite} setEditalAceite={setEditalAceite} clearError={clearError} />}
-            
+
             <div className={styles.navigationButtons}>
               {step > 1 && <button type="button" onClick={prevStep} className={styles.prevButton}>Voltar</button>}
               {step < 3 && <button type="button" onClick={nextStep} className={styles.nextButton}>Avançar</button>}

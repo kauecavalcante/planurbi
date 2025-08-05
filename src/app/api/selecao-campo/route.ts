@@ -20,15 +20,22 @@ const db = admin.firestore();
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { 
-      nome, data_nascimento, rg, 
-      rua, numero, complemento, cep, cidade, estado, 
+    const {
+      nome, data_nascimento, rg,
+      rua, numero, complemento, cep, cidade, estado,
       tipo_instituicao, instituicao, serie_ano
     } = body;
 
     if (!nome || !data_nascimento || !rg || !rua || !numero || !cep || !cidade || !estado || !tipo_instituicao || !instituicao || !serie_ano) {
       return NextResponse.json({ message: 'Todos os campos são obrigatórios, exceto o complemento.' }, { status: 400 });
     }
+
+    
+    const rgQuery = await db.collection("selecao_campo").where("rg", "==", rg).limit(1).get();
+    if (!rgQuery.empty) {
+      return NextResponse.json({ message: 'Este RG já foi cadastrado.' }, { status: 409 }); // 409 Conflict
+    }
+    
 
     const docRef = await db.collection("selecao_campo").add({
       nome,

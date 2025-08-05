@@ -3,8 +3,14 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: var(--cor-azul-claro);
-  padding: 2rem;
+  background-color: #FFFFFF; 
+}
+
+@media (min-width: 768px) {
+  .pageContainer {
+    padding: 2rem;
+    background-color: var(--cor-azul-claro);
+  }
 }
 
 .formCard {
@@ -12,21 +18,28 @@
   width: 100%;
   max-width: 900px;
   background-color: #FFFFFF;
-  border-radius: 24px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .formCard {
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    height: auto; 
+    max-height: calc(100vh - 4rem);
+  }
 }
 
 .brandingColumn {
-  background-color: var(--cor-verde-escuro);
-  color: #FFFFFF;
-  padding: 3rem;
-  width: 40%;
-  display: none;
+  display: none; 
 }
 
 @media (min-width: 768px) {
   .brandingColumn {
+    background-color: var(--cor-verde-escuro);
+    color: #FFFFFF;
+    padding: 3rem;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,15 +52,46 @@
 .brandingColumn p { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; opacity: 0.8; }
 
 .formColumn {
-  padding: 2rem 3rem;
+  padding: 2rem 1.5rem;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
 }
 
-@media (min-width: 768px) { .formColumn { width: 60%; } }
+@media (min-width: 768px) { 
+  .formColumn { 
+    width: 60%; 
+    padding: 2rem 3rem;
+    overflow-y: auto; 
+  } 
+}
 
-/* Stepper / Barra de Progresso */
+.mobileHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.mobileHeader img {
+  object-fit: contain;
+  height: auto;
+}
+.mobileHeader h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  margin-top: 1rem;
+  color: var(--cor-grafite);
+}
+.mobileHeader p {
+  font-size: 1rem;
+  color: #6B7280;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .mobileHeader {
+    display: none;
+  }
+}
+
+
 .stepperContainer {
   display: flex;
   justify-content: space-between;
@@ -60,6 +104,7 @@
   align-items: center;
   z-index: 1;
   text-align: center;
+  width: 60px; 
 }
 .stepCircle {
   width: 30px;
@@ -87,8 +132,8 @@
 .progressBar {
   position: absolute;
   top: 15px;
-  left: 15%;
-  right: 15%;
+  left: 30px; 
+  right: 30px;
   height: 4px;
   background-color: #E5E7EB;
   z-index: 0;
@@ -100,7 +145,7 @@
   transition: width 0.4s ease;
 }
 
-/* Conteúdo de cada passo */
+
 .stepContent {
   animation: fadeIn 0.5s ease;
 }
@@ -123,8 +168,13 @@
 }
 .inputWrapper .inputError { border-color: #EF4444 !important; }
 .fieldErrorMessage { color: #DC2626; font-size: 0.875rem; margin-top: 0.5rem; display: block; }
-.formGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-@media (max-width: 600px) { .formGrid { grid-template-columns: 1fr; } }
+.formGrid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+
+@media (min-width: 600px) { 
+  .formGrid { 
+    grid-template-columns: 1fr 1fr; 
+  } 
+}
 
 /* Spinner de carregamento para o CEP */
 .spinner {
@@ -156,9 +206,11 @@
 .navigationButtons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 2rem;
   border-top: 1px solid #E5E7EB;
   padding-top: 1.5rem;
+  gap: 1rem;
 }
 .prevButton, .nextButton, .formButton {
   padding: 0.8rem 2rem;
@@ -184,6 +236,7 @@
 .formButton { width: 100%; }
 .formButton:disabled { opacity: 0.7; cursor: not-allowed; }
 
+/* Mensagem de sucesso */
 .successMessage {
   background-color: #FFFFFF;
   color: var(--cor-verde-escuro);

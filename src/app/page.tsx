@@ -15,8 +15,8 @@ import { BannerModal } from '@/components/BannerModal';
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLScDO9BoQoZRkVd_OcgV1wyWCo9B9pln14kgpUsVmC5nw4LcsA/viewform"; 
+  // https://docs.google.com/forms/d/e/1FAIpQLScDO9BoQoZRkVd_OcgV1wyW
+  const formUrl = "/seminario"; 
 
   useEffect(() => {
     
