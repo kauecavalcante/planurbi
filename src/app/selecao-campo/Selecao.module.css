@@ -1,0 +1,210 @@
+.pageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--cor-azul-claro);
+  padding: 2rem;
+}
+
+.formCard {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.brandingColumn {
+  background-color: var(--cor-verde-escuro);
+  color: #FFFFFF;
+  padding: 3rem;
+  width: 40%;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .brandingColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.logoWrapper { margin-bottom: 2rem; max-width: 180px; }
+.logoWrapper img { filter: brightness(0) invert(1); width: 100%; height: auto; object-fit: contain; }
+.brandingColumn h2 { font-family: var(--font-heading); font-size: 2rem; line-height: 1.2; margin-bottom: 1rem; }
+.brandingColumn p { font-family: var(--font-body); font-size: 1rem; line-height: 1.6; opacity: 0.8; }
+
+.formColumn {
+  padding: 2rem 3rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) { .formColumn { width: 60%; } }
+
+/* Stepper / Barra de Progresso */
+.stepperContainer {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 3rem;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  text-align: center;
+}
+.stepCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #E5E7EB;
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.step.active .stepCircle {
+  background-color: var(--cor-verde-escuro);
+  color: white;
+}
+.stepLabel {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #6B7280;
+}
+.step.active .stepLabel { color: var(--cor-verde-escuro); }
+.progressBar {
+  position: absolute;
+  top: 15px;
+  left: 15%;
+  right: 15%;
+  height: 4px;
+  background-color: #E5E7EB;
+  z-index: 0;
+}
+.progress {
+  height: 100%;
+  background-color: var(--cor-verde-escuro);
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/* Conteúdo de cada passo */
+.stepContent {
+  animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.stepContent h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.inputGroup { margin-bottom: 1.5rem; }
+.inputWrapper { position: relative; }
+.inputWrapper i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #9CA3AF; font-size: 1.2rem; }
+.inputWrapper input { width: 100%; padding: 0.9rem 1rem 0.9rem 3rem; border-radius: 8px; border: 1px solid #D1D5DB; font-size: 1rem; }
+.inputWrapper input:read-only {
+  background-color: #F3F4F6;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+.inputWrapper .inputError { border-color: #EF4444 !important; }
+.fieldErrorMessage { color: #DC2626; font-size: 0.875rem; margin-top: 0.5rem; display: block; }
+.formGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 600px) { .formGrid { grid-template-columns: 1fr; } }
+
+/* Spinner de carregamento para o CEP */
+.spinner {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-top-color: var(--cor-verde-escuro);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+/* Grupo de Radio Buttons */
+.radioGroup { margin-bottom: 1.5rem; }
+.radioGroup > label { font-weight: 500; display: block; margin-bottom: 0.75rem; }
+.radioOptions { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.radioOption { display: flex; align-items: center; gap: 0.5rem; }
+.radioOption input { accent-color: var(--cor-verde-escuro); }
+
+.checkboxGroup { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 2rem; }
+.checkboxGroup input[type="checkbox"] { margin-top: 5px; width: 1.25rem; height: 1.25rem; cursor: pointer; accent-color: var(--cor-verde-escuro); }
+.checkboxGroup label { font-size: 0.95rem; line-height: 1.5; }
+
+/* Botões de Navegação */
+.navigationButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  border-top: 1px solid #E5E7EB;
+  padding-top: 1.5rem;
+}
+.prevButton, .nextButton, .formButton {
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+.prevButton {
+  background-color: transparent;
+  color: var(--cor-verde-escuro);
+  border: 2px solid #D1D5DB;
+}
+.prevButton:hover { background-color: #F3F4F6; }
+.nextButton, .formButton {
+  background-color: var(--cor-verde-escuro);
+  color: white;
+  border: 2px solid var(--cor-verde-escuro);
+}
+.nextButton:hover, .formButton:hover:not(:disabled) { background-color: #004A3F; }
+.formButton { width: 100%; }
+.formButton:disabled { opacity: 0.7; cursor: not-allowed; }
+
+.successMessage {
+  background-color: #FFFFFF;
+  color: var(--cor-verde-escuro);
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.successMessage i {
+  font-size: 4rem;
+  color: #16A3A4;
+}
+
+.successMessage h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+}
