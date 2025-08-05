@@ -15,11 +15,14 @@ import { BannerModal } from '@/components/BannerModal';
 
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // https://docs.google.com/forms/d/e/1FAIpQLScDO9BoQoZRkVd_OcgV1wyW
-  const formUrl = "/seminario"; 
+
+  
+  // 1. Link para o banner do modal
+  const seminarUrl = "/seminario"; 
+  // 2. Link para o questionário (botão e QR Code)
+  const questionnaireUrl = "https://docs.google.com/forms/d/e/1FAIpQLScDO9BoQoZRkVd_OcgV1wyWCo9B9pln14kgpUsVmC5nw4LcsA/viewform"; 
 
   useEffect(() => {
-    
     const hasSeenModal = sessionStorage.getItem('planurbiModalSeen');
     if (!hasSeenModal) {
       const timer = setTimeout(() => {
@@ -37,13 +40,15 @@ export default function HomePage() {
   return (
     <>
       
-      {isModalOpen && <BannerModal onClose={handleCloseModal} formUrl={formUrl} />}
+      
+      {isModalOpen && <BannerModal onClose={handleCloseModal} formUrl={seminarUrl} />}
       
       <Header />
       <main>
         <Hero />
         
-        <CallToActionSection formUrl={formUrl} /> 
+       
+        <CallToActionSection formUrl={questionnaireUrl} /> 
         <AboutSection />
         <WorkshopsSection /> 
         <ObjectiveSection />
