@@ -18,7 +18,7 @@ export default function HomePage() {
 
   
   // 1. Link para o banner do modal
-  const seminarUrl = "/seminario"; 
+  const seminarUrl = "https://docs.google.com/forms/d/e/1FAIpQLScDO9BoQoZRkVd_OcgV1wyWCo9B9pln14kgpUsVmC5nw4LcsA/viewform"; 
   // 2. Link para o questionário (botão e QR Code)
   const questionnaireUrl = "https://docs.google.com/forms/d/e/1FAIpQLScDO9BoQoZRkVd_OcgV1wyWCo9B9pln14kgpUsVmC5nw4LcsA/viewform"; 
 
