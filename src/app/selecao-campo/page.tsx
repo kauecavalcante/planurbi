@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 type InstituicaoTipo = 'escola' | 'faculdade' | 'universidade' | '';
 interface FormData {
-  nome: string; data_nascimento: string; rg: string;
+  nome: string; data_nascimento: string; rg: string; email: string; // Adicionado email
   cep: string; rua: string; numero: string; complemento: string; cidade: string; estado: string;
   tipo_instituicao: InstituicaoTipo; instituicao: string; serie_ano: string;
 }
@@ -20,7 +20,8 @@ interface StepProps {
 }
 
 const initialFormData: FormData = {
-  nome: '', data_nascimento: '', rg: '', cep: '', rua: '', numero: '',
+  nome: '', data_nascimento: '', rg: '', email: '', // Adicionado email
+  cep: '', rua: '', numero: '',
   complemento: '', cidade: '', estado: '', tipo_instituicao: '',
   instituicao: '', serie_ano: '',
 };
@@ -53,6 +54,13 @@ export default function SelecaoPage() {
         newErrors.data_nascimento = "Por favor, insira a data completa (DD/MM/AAAA).";
       }
       if (!formData.rg) newErrors.rg = "RG é obrigatório.";
+      // --- NOVO TRECHO: Validação de email ---
+      if (!formData.email) {
+        newErrors.email = "E-mail é obrigatório.";
+      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = "Formato de e-mail inválido.";
+      }
+      // --- FIM DO NOVO TRECHO ---
     } else if (step === 2) {
       if (!formData.cep) newErrors.cep = "CEP é obrigatório.";
       if (!formData.rua) newErrors.rua = "Rua é obrigatória.";
@@ -140,8 +148,9 @@ export default function SelecaoPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        if (response.status === 409) {
-          setErrors({ rg: data.message });
+        // --- ALTERAÇÃO: Trata o erro de duplicidade para RG e Email ---
+        if (response.status === 409 && data.field) {
+          setErrors({ [data.field]: data.message });
           setStep(1);
         }
         throw new Error(data.message || 'Ocorreu um erro.');
@@ -149,7 +158,8 @@ export default function SelecaoPage() {
 
       setStatus('success');
     } catch (error) {
-      setStatus('error');
+      // Deixa o botão clicável novamente em caso de erro de validação
+      setStatus('idle');
     }
   };
 
@@ -222,6 +232,8 @@ const Step1 = ({ formData, errors, handleChange, handleDataNascimentoChange }: S
   <div className={styles.stepContent}>
     <h3>Dados Pessoais</h3>
     <div className={styles.inputGroup}><div className={styles.inputWrapper}> <i className='bx bxs-user'></i> <input type="text" id="nome" value={formData.nome} onChange={handleChange} placeholder="Nome Completo" required className={errors.nome ? styles.inputError : ''} /> </div>{errors.nome && <span className={styles.fieldErrorMessage}>{errors.nome}</span>}</div>
+    {/* --- NOVO CAMPO: Email --- */}
+    <div className={styles.inputGroup}><div className={styles.inputWrapper}> <i className='bx bxs-envelope'></i> <input type="email" id="email" value={formData.email} onChange={handleChange} placeholder="E-mail" required className={errors.email ? styles.inputError : ''} /> </div>{errors.email && <span className={styles.fieldErrorMessage}>{errors.email}</span>}</div>
     <div className={styles.inputGroup}><div className={styles.inputWrapper}> <i className='bx bxs-calendar'></i> <input type="text" id="data_nascimento" value={formData.data_nascimento} onChange={handleDataNascimentoChange} placeholder="Data de Nascimento (DD/MM/AAAA)" required className={errors.data_nascimento ? styles.inputError : ''} /> </div>{errors.data_nascimento && <span className={styles.fieldErrorMessage}>{errors.data_nascimento}</span>}</div>
     <div className={styles.inputGroup}><div className={styles.inputWrapper}> <i className='bx bxs-id-card'></i> <input type="text" id="rg" value={formData.rg} onChange={handleChange} placeholder="RG" required className={errors.rg ? styles.inputError : ''} /> </div>{errors.rg && <span className={styles.fieldErrorMessage}>{errors.rg}</span>}</div>
   </div>
