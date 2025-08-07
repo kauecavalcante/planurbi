@@ -3,6 +3,14 @@ import { NextResponse } from 'next/server';
 
 const mockNoticias = [
   {
+    id: '3',
+    titulo: "FEPESA realiza I Seminário PlanUrbi sobre planejamento urbano inteligente",
+    resumo: "Evento gratuito em Maceió reúne especialistas, gestores e acadêmicos para debater soluções inovadoras para as cidades",
+    imagemUrl: "/seminario.jpg",
+    slug: "fepesa-realiza-i-Seminario-planUrbi-sobre-planejamento-urbano-inteligente", 
+    dataPublicacao: new Date('2025-08-05T10:00:00Z').toISOString(),
+  },
+  {
     id: '1',
     titulo: "Barra de São Miguel inicia revisão do Plano Diretor com audiência pública participativa",
     resumo: "Evento marcou o lançamento oficial do PlanUrbi e reuniu autoridades, técnicos e moradores para debater o futuro da cidade",

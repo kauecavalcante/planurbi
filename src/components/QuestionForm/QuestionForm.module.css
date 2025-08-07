@@ -108,3 +108,34 @@
 .successMessage p {
     color: #2e7d32;
 }
+
+/* Adicione ao final de src/components/QuestionForm/QuestionForm.module.css */
+
+.errorMessage {
+    color: #D32F2F; /* Vermelho escuro para erros */
+    background-color: #FFEBEE; /* Fundo rosa claro */
+    border: 1px solid #FFCDD2;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.backButton {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--primary-blue, #0055A5);
+    background: transparent;
+    color: var(--primary-blue, #0055A5);
+    font-family: var(--font-hauora, 'sans-serif');
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.backButton:hover {
+    background: var(--primary-blue, #0055A5);
+    color: white;
+}

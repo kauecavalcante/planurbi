@@ -3,41 +3,58 @@
 import { useState, FormEvent } from 'react';
 import styles from './QuestionForm.module.css';
 
-type FormStatus = 'idle' | 'submitting' | 'success';
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
+type FormError = string | null;
 
 const QuestionForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [question, setQuestion] = useState('');
   const [status, setStatus] = useState<FormStatus>('idle');
+  const [error, setError] = useState<FormError>(null);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-
-    if (!name || !email || !question) {
-      alert('Por favor, preencha todos os campos.');
-      return;
-    }
-
     setStatus('submitting');
-    console.log('Enviando pergunta:', { name, email, question });
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setStatus('success');
+    setError(null);
 
-    setTimeout(() => {
-        setStatus('idle');
-        setName('');
-        setEmail('');
-        setQuestion('');
-    }, 4000);
+    try {
+      const response = await fetch('/api/perguntas', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, question }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Se a resposta da API não for de sucesso (status 4xx ou 5xx)
+        throw new Error(data.error || 'Falha ao enviar pergunta.');
+      }
+      
+      setStatus('success');
+      // Limpa o formulário após o sucesso
+      setName('');
+      setEmail('');
+      setQuestion('');
+
+    } catch (err: any) {
+      setStatus('error');
+      setError(err.message || 'Não foi possível conectar ao servidor. Tente novamente mais tarde.');
+    }
   };
 
   if (status === 'success') {
     return (
-        <div className={styles.successMessage}>
-            <h3>Obrigado!</h3>
-            <p>Sua pergunta foi enviada com sucesso e será avaliada pela nossa equipe.</p>
-        </div>
+      <div className={styles.successMessage}>
+        <h3>Obrigado!</h3>
+        <p>Sua pergunta foi enviada com sucesso e será avaliada pela nossa equipe.</p>
+        <button onClick={() => setStatus('idle')} className={styles.backButton}>
+            Enviar outra pergunta
+        </button>
+      </div>
     )
   }
 
@@ -56,6 +73,7 @@ const QuestionForm = () => {
             required
             className={styles.input}
             placeholder="Digite seu nome completo"
+            disabled={status === 'submitting'}
           />
         </div>
         
@@ -71,6 +89,7 @@ const QuestionForm = () => {
             required
             className={styles.input}
             placeholder="seu.email@exemplo.com"
+            disabled={status === 'submitting'}
           />
         </div>
       </div>
@@ -87,8 +106,13 @@ const QuestionForm = () => {
           rows={5}
           className={styles.textarea}
           placeholder="Escreva sua pergunta para os palestrantes aqui..."
+          disabled={status === 'submitting'}
         />
       </div>
+
+      {status === 'error' && (
+        <p className={styles.errorMessage}>{error}</p>
+      )}
 
       <div>
         <button
