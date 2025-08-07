@@ -5,6 +5,14 @@ import { motion } from "framer-motion";
 import Image from 'next/image';
 import styles from '../../app/programacao/Programacao.module.css';
 
+// ATUALIZADO: Interface para uma palestra individual dentro de um bloco
+export interface Talk {
+  title: string;
+  speaker: string;
+  image: string;
+}
+
+// ATUALIZADO: Interface para um evento da timeline
 export interface TimelineEvent {
   title: string;
   speaker?: string;
@@ -12,7 +20,8 @@ export interface TimelineEvent {
   endTime: string;
   image?: string;
   status: "completed" | "current" | "upcoming";
-  category: 'Abertura' | 'Comunicação' | 'Debate' | 'Coffee Break' | 'Palestra Magna' | 'Confraternização';
+  category: 'Abertura' | 'Bloco' | 'Debate' | 'Coffee Break' | 'Palestra Magna' | 'Confraternização';
+  talks?: Talk[]; // Array de palestras para eventos de bloco
 }
 
 const statusTranslations = {
@@ -23,6 +32,26 @@ const statusTranslations = {
 
 export function ModernTimeline({ items }: { items: TimelineEvent[] }) {
   if (!items || items.length === 0) return <p>Programação não disponível.</p>;
+
+  // ATUALIZADO: Função para determinar o ícone com base na categoria
+  const getIconForCategory = (category: TimelineEvent['category']) => {
+    switch (category) {
+      case 'Abertura':
+        return 'bx bxs-keynote';
+      case 'Bloco':
+        return 'bx bxs-group';
+      case 'Debate':
+        return 'bx bxs-conversation';
+      case 'Coffee Break':
+        return 'bx bxs-coffee-bean';
+      case 'Palestra Magna':
+        return 'bx bxs-star';
+      case 'Confraternização':
+        return 'bx bxs-drink';
+      default:
+        return 'bx bx-calendar-event';
+    }
+  };
 
   return (
     <section className={styles.timelineWrapper}>
@@ -53,7 +82,7 @@ export function ModernTimeline({ items }: { items: TimelineEvent[] }) {
                             className={styles.timelineAvatarImage}
                           />
                         ) : (
-                           <i className={`${styles.timelineDefaultIcon} ${item.status === 'current' ? 'bx bxs-time-five' : 'bx bx-calendar-event'}`}></i>
+                           <i className={`${styles.timelineDefaultIcon} ${getIconForCategory(item.category)}`}></i>
                         )}
                       </div>
                   </div>
@@ -73,7 +102,30 @@ export function ModernTimeline({ items }: { items: TimelineEvent[] }) {
                       {item.speaker && (
                         <p className={styles.timelineSpeaker}>{item.speaker}</p>
                       )}
-                      {/* --- ADICIONADO: Barra de Progresso --- */}
+
+                      {/* ATUALIZADO: Renderiza as palestras se existirem */}
+                      {item.talks && item.talks.length > 0 && (
+                        <div className={styles.talksContainer}>
+                          {item.talks.map((talk, talkIndex) => (
+                            <div key={talkIndex} className={styles.talkItem}>
+                              <div className={styles.talkImageContainer}>
+                                <Image
+                                  src={talk.image}
+                                  alt={talk.speaker}
+                                  width={40}
+                                  height={40}
+                                  className={styles.talkImage}
+                                />
+                              </div>
+                              <div className={styles.talkDetails}>
+                                <p className={styles.talkTitle}>{talk.title}</p>
+                                <p className={styles.talkSpeaker}>{talk.speaker}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
                       <div className={styles.timelineProgressBar}>
                         <motion.div
                           className={`${styles.timelineProgressIndicator} ${statusClass}`}
