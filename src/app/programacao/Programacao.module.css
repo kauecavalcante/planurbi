@@ -1,6 +1,6 @@
 /* Estilos gerais da página */
 .mainContainer {
-  background-color: #FFFFFF; /* Fundo branco para um look mais limpo */
+  background-color: #FFFFFF;
   color: var(--cor-grafite);
 }
 
@@ -103,11 +103,11 @@
     transform: translateX(5px);
 }
 
-/* --- NOVA SECÇÃO: Estilos para os Perfis dos Palestrantes --- */
+/* --- Seção de Palestrantes --- */
 .speakersSection {
   padding: 5rem 1.5rem;
   background-color: var(--cor-azul-claro);
-  overflow: hidden; /* Para conter os elementos gráficos */
+  overflow: hidden;
 }
 
 .speakersGrid {
@@ -115,29 +115,28 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 4rem; /* Espaçamento entre os cards */
+  gap: 0; /* O espaçamento agora é controlado pelo padding e pela linha */
 }
 
+/* ATUALIZADO: Estilos para o card do palestrante (mobile-first) */
 .speakerProfileCard {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   position: relative;
+  padding: 2rem 0;
 }
 
-@media (min-width: 768px) {
-  .speakerProfileCard {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4rem;
-  }
-  /* Alterna a ordem da imagem e do texto */
-  .speakerProfileCard:nth-child(even) .speakerImageContainer {
-    order: 2;
-  }
-  .speakerProfileCard:nth-child(even) .speakerTextContainer {
-    order: 1;
-  }
+/* ATUALIZADO: Linha separadora para mobile */
+.speakerProfileCard:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background-color: #dde2e7;
 }
 
 .speakerImageContainer {
@@ -146,14 +145,14 @@
   justify-content: center;
   align-items: center;
   background-color: var(--cor-verde-escuro);
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 24px;
-  min-height: 400px;
+  width: 100%;
+  max-width: 300px;
 }
 
 .speakerImage {
   width: 100%;
-  max-width: 300px;
   height: auto;
   aspect-ratio: 1 / 1;
   border-radius: 16px;
@@ -165,11 +164,15 @@
 
 .speakerTextContainer {
   padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .speakerProfileName {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 800;
   line-height: 1.1;
   color: var(--cor-verde-escuro);
@@ -194,6 +197,42 @@
   font-size: 1rem;
   line-height: 1.7;
   color: #4b5563;
+  text-align: justify;
+}
+
+/* ATUALIZADO: Estilos para desktop */
+@media (min-width: 768px) {
+  .speakerProfileCard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    padding: 0;
+    text-align: left;
+  }
+  
+  .speakerProfileCard:not(:last-child)::after {
+    display: none; /* Esconde a linha no desktop */
+  }
+
+  .speakersGrid {
+    gap: 4rem; /* Retorna o gap para desktop */
+  }
+
+  .speakerTextContainer {
+    align-items: flex-start;
+  }
+
+  .speakerProfileBio {
+    text-align: left;
+  }
+
+  /* Alterna a ordem da imagem e do texto no desktop */
+  .speakerProfileCard:nth-child(even) .speakerImageContainer {
+    order: 2;
+  }
+  .speakerProfileCard:nth-child(even) .speakerTextContainer {
+    order: 1;
+  }
 }
 
 
@@ -204,7 +243,6 @@
 }
 
 /* --- ESTILOS PARA A MODERN TIMELINE --- */
-
 .timelineWrapper {
   width: 100%;
   max-width: 896px;
@@ -334,7 +372,6 @@
   margin-bottom: 1rem;
 }
 
-/* ATUALIZADO: Estilos para as palestras dentro de um bloco */
 .talksContainer {
   margin-top: 1.25rem;
   display: flex;

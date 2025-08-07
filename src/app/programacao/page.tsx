@@ -59,10 +59,8 @@ const speakers = [
   }
 ];
 
-// ATUALIZADO: Tipo para um item da programação, agora pode conter palestras (talks)
 type ScheduleItem = Omit<TimelineEvent, 'status'>;
 
-// --- ATUALIZADO: Nova programação do evento estruturada em blocos ---
 const programSchedule: ScheduleItem[] = [
   { 
     title: "Abertura", 
@@ -141,15 +139,9 @@ const getEventStatus = (startTime: string, endTime: string): "completed" | "curr
   return "upcoming";
 };
 
-// Componente para o Card de Perfil do Palestrante
+// ATUALIZADO: A ordem dos elementos foi alterada para mobile-first
 const SpeakerProfileCard = ({ name, title, avatar, bio }: { name: string, title: string, avatar: string, bio: string }) => (
   <div className={styles.speakerProfileCard}>
-    <div className={styles.speakerTextContainer}>
-      <h3 className={styles.speakerProfileName}>{name}</h3>
-      <p className={styles.speakerProfileTitle}>{title}</p>
-      <div className={styles.divider}></div>
-      <p className={styles.speakerProfileBio}>{bio}</p>
-    </div>
     <div className={styles.speakerImageContainer}>
       <Image 
         src={avatar}
@@ -158,6 +150,12 @@ const SpeakerProfileCard = ({ name, title, avatar, bio }: { name: string, title:
         height={350}
         className={styles.speakerImage}
       />
+    </div>
+    <div className={styles.speakerTextContainer}>
+      <h3 className={styles.speakerProfileName}>{name}</h3>
+      <p className={styles.speakerProfileTitle}>{title}</p>
+      <div className={styles.divider}></div>
+      <p className={styles.speakerProfileBio}>{bio}</p>
     </div>
   </div>
 );
