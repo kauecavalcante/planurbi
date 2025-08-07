@@ -1,0 +1,110 @@
+/* src/components/QuestionForm/QuestionForm.module.css */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.userInfoGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .userInfoGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark, #333);
+    font-size: 0.875rem;
+    font-family: var(--font-hauora, 'sans-serif');
+}
+
+/* Estilo base para TODOS os campos de input, garantindo consistência */
+.input,
+.textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--border-color, #DDDDDD);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-hauora, 'sans-serif');
+    background-color: var(--background-light, #fff);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input {
+    height: 58px;
+}
+
+/* O textarea terá uma altura inicial, mas pode crescer */
+.textarea {
+    min-height: 120px;
+    resize: vertical; /* Permite que o usuário aumente a altura se precisar */
+}
+
+/* Efeito de foco idêntico para todos os campos */
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue, #0055A5);
+    box-shadow: 0 0 0 3px rgba(0, 85, 165, 0.15);
+}
+
+/* Botão de envio com o estilo do seu site */
+.submitButton {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    background: var(--primary-blue, #0055A5);
+    color: white;
+    font-family: var(--font-hauora, 'sans-serif');
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.submitButton:hover {
+    background: var(--secondary-blue, #003366);
+    transform: translateY(-2px);
+}
+
+.submitButton:disabled {
+    background-color: #BDBDBD;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Mensagem de sucesso */
+.successMessage {
+    text-align: center;
+    padding: 2rem;
+    background-color: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+}
+
+.successMessage h3 {
+    color: #1b5e20;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.successMessage p {
+    color: #2e7d32;
+}

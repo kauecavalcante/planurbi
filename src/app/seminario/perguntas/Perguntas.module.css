@@ -1,0 +1,49 @@
+/* src/app/seminario/perguntas/Perguntas.module.css */
+
+.page {
+    width: 100%;
+    padding: 4rem 1rem;
+    display: flex;
+    justify-content: center;
+    background-color: #fcfaf7; /* Fundo muito claro que complementa o bege */
+    min-height: calc(100vh - 80px);
+}
+
+.contentWrapper {
+    width: 100%;
+    max-width: 700px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header h1 {
+    /* CORRIGIDO: Usa a variável de fonte de título correta do seu projeto */
+    font-family: var(--font-anek);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--cor-verde-escuro, #00362D);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.header p {
+    /* CORRIGIDO: Usa a variável de fonte de corpo correta do seu projeto */
+    font-family: var(--font-hauora);
+    font-size: 1.125rem;
+    color: var(--cor-marrom, #594D46);
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.formSection {
+    width: 100%;
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(89, 77, 70, 0.07);
+    border: 1px solid #EAE2D6;
+}
