@@ -5,14 +5,12 @@ import { motion } from "framer-motion";
 import Image from 'next/image';
 import styles from '../../app/programacao/Programacao.module.css';
 
-// ATUALIZADO: Interface para uma palestra individual dentro de um bloco
 export interface Talk {
   title: string;
   speaker: string;
   image: string;
 }
 
-// ATUALIZADO: Interface para um evento da timeline
 export interface TimelineEvent {
   title: string;
   speaker?: string;
@@ -21,7 +19,7 @@ export interface TimelineEvent {
   image?: string;
   status: "completed" | "current" | "upcoming";
   category: 'Abertura' | 'Bloco' | 'Debate' | 'Coffee Break' | 'Palestra Magna' | 'Confraternização';
-  talks?: Talk[]; // Array de palestras para eventos de bloco
+  talks?: Talk[];
 }
 
 const statusTranslations = {
@@ -33,7 +31,6 @@ const statusTranslations = {
 export function ModernTimeline({ items }: { items: TimelineEvent[] }) {
   if (!items || items.length === 0) return <p>Programação não disponível.</p>;
 
-  // ATUALIZADO: Função para determinar o ícone com base na categoria
   const getIconForCategory = (category: TimelineEvent['category']) => {
     switch (category) {
       case 'Abertura':
@@ -93,7 +90,8 @@ export function ModernTimeline({ items }: { items: TimelineEvent[] }) {
                   >
                     <div className={styles.timelineCardContent}>
                       <div className={styles.timelineCardHeader}>
-                        <p className={`${styles.timelineTime} ${statusClass}`}>{item.startTime} - {item.endTime}</p>
+                        {/* ATUALIZADO: Exibe apenas o horário de início */}
+                        <p className={`${styles.timelineTime} ${statusClass}`}>{item.startTime}</p>
                         <div className={`${styles.timelineStatusBadge} ${statusClass}`}>
                           {statusTranslations[item.status]}
                         </div>
@@ -103,7 +101,6 @@ export function ModernTimeline({ items }: { items: TimelineEvent[] }) {
                         <p className={styles.timelineSpeaker}>{item.speaker}</p>
                       )}
 
-                      {/* ATUALIZADO: Renderiza as palestras se existirem */}
                       {item.talks && item.talks.length > 0 && (
                         <div className={styles.talksContainer}>
                           {item.talks.map((talk, talkIndex) => (
