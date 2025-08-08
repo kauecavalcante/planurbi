@@ -3,14 +3,6 @@ import { NextResponse } from 'next/server';
 
 const mockNoticias = [
   {
-    id: '5',
-    titulo: "FEPESA abre inscrições para bolsas remuneradas em projeto de mapeamento urbano em Barra de São Miguel",
-    resumo: "Seleção oferece 15 vagas com atuação até dezembro no PlanUrbi; 12 bolsas são exclusivas para moradores do município. Participantes serão capacitados para coleta de informações territoriais.",
-    imagemUrl: "/bannerBolsa.jpeg",
-    slug: "fepesa-abre-inscricoes-para-bolsas-remuneradas-em-projeto-de-mapeamento-urbano-em-barra-de-sao-miguel", 
-    dataPublicacao: new Date('2025-08-08T10:00:00Z').toISOString(),
-  },
-  {
     id: '4',
     titulo: "PlanUrbi e Prefeitura de Barra de São Miguel alinham próximas etapas e lançam edital de seleção para agentes de campo",
     resumo: "Reunião de balanço do projeto confirma cronograma de atividades e abre oportunidade de trabalho para jovens da comunidade",
