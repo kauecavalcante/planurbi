@@ -40,9 +40,7 @@ export function AboutSection() {
           <p className={styles.sectionParagraph}>
             Os Planos Diretores definem estratégias para o ordenamento territorial e para políticas setoriais que precisam ser incorporadas pela gestão pública e nos principais instrumentos do orçamento municipal. 
           </p>
-          <p className={styles.sectionParagraph}>
-           Devido à necessidade de atualização e reestruturação da política urbana do município, iniciou-se a revisão do Plano Diretor Municipal da Barra de São Miguel em junho de 2025.
-          </p>
+          
         </div>
 
         <div className={styles.diferenciaisBlock}>

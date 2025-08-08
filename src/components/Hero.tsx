@@ -29,7 +29,7 @@ export function Hero() {
         <div className={styles.contentWrapper}>
           <div className={styles.logoContainer}>
             <Image
-              src="/logo-planurbi-azul.png"
+              src="/logo-planurbi-stag.png"
               alt="Logo PlanUrbi"
               width={220}
               height={65}
@@ -39,16 +39,14 @@ export function Hero() {
           </div>
 
           <h1 className={styles.mainHeadline}>
-            Barra de São Miguel mais inteligente, justa e preparada para o futuro
+            Planejamento urbano integrado para uma cidade mais inclusiva, moderna e eficiente.
           </h1>
 
           <div className={styles.textBlock}>
             <p className={styles.paragraph}>
               Transformando o território com tecnologia, participação social e desenvolvimento sustentável.
             </p>
-            <p className={styles.paragraph}>
-              Planejamento urbano integrado para uma cidade mais inclusiva, moderna e eficiente.
-            </p>
+            
           </div>
         </div>
       </div>

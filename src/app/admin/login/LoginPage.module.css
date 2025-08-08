@@ -1,0 +1,149 @@
+/* Ficheiro: src/app/admin/login/LoginPage.module.css (ATUALIZADO) */
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #fdfaf6;
+    background-image: url('/grafismo-mapa.png'); /* Fundo para desktop */
+    background-size: cover;
+    background-position: center;
+}
+
+.loginBox {
+    width: 100%;
+    max-width: 450px;
+    padding: 3rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(89, 77, 70, 0.1);
+    border: 1px solid var(--cor-bege);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.header h2 {
+    font-family: var(--font-anek);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cor-verde-escuro);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    font-family: var(--font-hauora);
+    font-size: 1rem;
+    color: var(--cor-marrom);
+    line-height: 1.6;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: var(--cor-marrom);
+    font-size: 0.9rem;
+    font-family: var(--font-hauora);
+}
+
+.input {
+    width: 100%;
+    height: 58px;
+    padding: 1rem;
+    border: 1px solid var(--cor-bege);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-hauora);
+    background-color: #fff;
+    color: var(--cor-verde-escuro);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--cor-azul-primario);
+    box-shadow: 0 0 0 3px rgba(0, 85, 165, 0.15);
+}
+
+.submitButton {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    background: var(--cor-azul-primario);
+    color: white;
+    font-family: var(--font-hauora);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 1rem;
+}
+
+.submitButton:hover:not(:disabled) {
+    background: var(--cor-azul-secundario);
+    transform: translateY(-2px);
+}
+
+.submitButton:disabled {
+    background-color: #BDBDBD;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.errorMessage {
+    color: #D32F2F;
+    background-color: #FFEBEE;
+    border: 1px solid #FFCDD2;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+
+/* --- AJUSTES PARA TELEMÓVEL --- */
+@media (max-width: 600px) {
+    .page {
+        /* Remove o fundo gráfico e o padding para ocupar todo o ecrã */
+        background-image: none;
+        padding: 0;
+        align-items: flex-start; /* Alinha a caixa no topo */
+    }
+
+    .loginBox {
+        /* A caixa de login ocupa todo o ecrã, sem bordas ou sombras */
+        width: 100%;
+        height: 100vh;
+        max-width: 100%;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        padding: 4rem 1.5rem 2rem 1.5rem; /* Mais padding no topo */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centra o conteúdo verticalmente */
+    }
+
+    .header h2 {
+        font-size: 1.8rem;
+    }
+}

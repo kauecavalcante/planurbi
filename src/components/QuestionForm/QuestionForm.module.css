@@ -1,0 +1,143 @@
+/* src/components/QuestionForm/QuestionForm.module.css */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.userInfoGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+    .userInfoGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: var(--cor-marrom);
+    font-size: 0.9rem;
+    font-family: var(--font-hauora);
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--cor-bege);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-hauora);
+    background-color: #fff;
+    color: var(--cor-verde-escuro);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: #a09995;
+}
+
+.input {
+    height: 58px;
+}
+
+.textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: var(--cor-azul-primario);
+    box-shadow: 0 0 0 3px rgba(0, 85, 165, 0.15);
+}
+
+.submitButton {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    background: var(--cor-azul-primario);
+    color: white;
+    font-family: var(--font-hauora);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.submitButton:hover:not(:disabled) {
+    background: var(--cor-azul-secundario);
+    transform: translateY(-2px);
+}
+
+.submitButton:disabled {
+    background-color: #BDBDBD;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.successMessage {
+    text-align: center;
+    padding: 2.5rem;
+    background-color: var(--cor-sucesso-fundo);
+    border: 1px solid var(--cor-sucesso-borda);
+    border-radius: 8px;
+}
+
+.successMessage h3 {
+    font-family: var(--font-anek);
+    color: var(--cor-sucesso-texto);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.successMessage p {
+    color: var(--cor-marrom);
+    line-height: 1.6;
+}
+
+.errorMessage {
+    color: var(--cor-erro-texto);
+    background-color: var(--cor-erro-fundo);
+    border: 1px solid var(--cor-erro-borda);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.backButton {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--cor-azul-primario);
+    background: transparent;
+    color: var(--cor-azul-primario);
+    font-family: var(--font-hauora);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.backButton:hover {
+    background: var(--cor-azul-primario);
+    color: white;
+}

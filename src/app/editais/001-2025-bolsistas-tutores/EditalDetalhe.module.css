@@ -1,0 +1,204 @@
+/* Caminho: src/app/editais/001-2025-bolsistas-tutores/EditalDetalhe.module.css */
+
+.pageWrapper {
+    background-color: var(--cor-bege);
+    width: 100%;
+    padding-top: 120px;
+    padding-bottom: 5rem;
+}
+
+.page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.breadcrumb {
+    font-family: var(--font-hauora);
+    font-size: 0.9rem;
+    color: var(--cor-marrom);
+    margin-bottom: 2rem;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: var(--cor-azul-primario);
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: var(--cor-azul-secundario);
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+}
+
+.mainContent {}
+
+.header h1 {
+    font-family: var(--font-anek);
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--cor-verde-escuro);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-family: var(--font-hauora);
+    font-size: 1.1rem;
+    color: var(--cor-marrom);
+    line-height: 1.7;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.8rem;
+    border-radius: 8px;
+    font-family: var(--font-hauora);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.button i {
+    font-size: 1.2rem;
+}
+
+.primary {
+    background-color: var(--cor-azul-primario);
+    color: #fff;
+    border: 2px solid var(--cor-azul-primario);
+}
+
+.primary:hover {
+    background-color: var(--cor-azul-secundario);
+    border-color: var(--cor-azul-secundario);
+    transform: translateY(-2px);
+}
+
+.secondary {
+    background-color: transparent;
+    color: var(--cor-azul-primario);
+    border: 2px solid var(--cor-azul-primario);
+}
+
+.secondary:hover {
+    background-color: var(--cor-azul-primario);
+    color: #fff;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.infoBox {
+    background-color: #fff;
+    border: 1px solid var(--cor-bege);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.infoBox h3 {
+    font-family: var(--font-anek);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--cor-verde-escuro);
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.infoBox ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.infoBox li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-family: var(--font-hauora);
+    font-size: 0.95rem;
+    color: var(--cor-marrom);
+}
+
+.infoBox li i {
+    font-size: 1.2rem;
+    color: var(--cor-azul-primario);
+    margin-top: 2px;
+}
+
+.infoBox li strong {
+    display: block;
+    font-weight: 600;
+}
+
+.statusAndamento {
+    color: #2e7d32;
+    font-weight: 600;
+}
+
+.anexoLink {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background-color: #f7f9fc;
+    text-decoration: none;
+    color: var(--cor-marrom);
+    transition: background-color 0.2s;
+}
+
+.anexoLink:hover {
+    background-color: #eef2f7;
+}
+
+.anexoLink i {
+    font-size: 1.8rem;
+    color: var(--cor-azul-primario);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .pageWrapper {
+        padding-top: 100px;
+        padding-bottom: 4rem;
+    }
+    .page {
+        padding: 0 1rem;
+    }
+    .actions {
+        flex-direction: column;
+    }
+    .button {
+        width: 100%;
+    }
+}

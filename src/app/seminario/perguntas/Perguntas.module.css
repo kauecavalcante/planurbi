@@ -1,0 +1,84 @@
+/* src/app/seminario/perguntas/Perguntas.module.css */
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 5rem 1rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Evita que o grafismo de fundo vaze */
+    background-color: #fdfaf6; /* Fundo suave do seu projeto */
+}
+
+/* Opcional: Se tiver um grafismo de formas, pode usá-lo aqui */
+/*
+.backgroundGraphic {
+    position: absolute;
+    top: -150px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background-image: url('/grafismo-forma.png'); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.15;
+    z-index: 0;
+}
+*/
+
+.contentWrapper {
+    width: 100%;
+    max-width: 700px;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header h1 {
+    font-family: var(--font-anek);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--cor-verde-escuro);
+    line-height: 1.1;
+}
+
+.header p {
+    font-family: var(--font-hauora);
+    font-size: 1.125rem;
+    color: var(--cor-marrom);
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.header p strong {
+    color: var(--cor-azul-primario);
+    font-weight: 600;
+}
+
+.formSection {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(89, 77, 70, 0.1);
+    border: 1px solid var(--cor-bege);
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 4rem 1rem;
+    }
+    .formSection {
+        padding: 2rem;
+    }
+}

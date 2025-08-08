@@ -1,0 +1,46 @@
+/* Crie este ficheiro em: src/app/admin/(protegido)/AdminLayout.module.css */
+
+.adminWrapper {
+  background-color: #f4f7f6;
+  min-height: 100vh;
+}
+
+.header {
+  width: 100%;
+  background-color: #ffffff;
+  /* 2. Padding aumentado para dar mais espaço ao logo maior */
+  padding: 1.25rem 2rem; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoutButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--cor-azul-primario);
+  background-color: transparent;
+  color: var(--cor-azul-primario);
+  border-radius: 8px;
+  font-family: var(--font-hauora);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logoutButton:hover {
+  background-color: var(--cor-azul-primario);
+  color: #fff;
+}
+
+.mainContent {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}

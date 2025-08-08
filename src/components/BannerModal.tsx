@@ -29,10 +29,10 @@ export function BannerModal({ onClose, formUrl }: BannerModalProps) {
         
         <a href={formUrl} target="_blank" rel="noopener noreferrer" className={styles.bannerLink}>
           <Image 
-            src="/propaganda.jpeg" 
+            src="/bannerSeminario.png" 
             alt="Banner do questionário de diagnóstico PlanUrbi"
-            width={450} 
-            height={450} 
+            width={500} 
+            height={500} 
             className={styles.bannerImage}
           />
         </a>

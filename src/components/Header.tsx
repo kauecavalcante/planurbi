@@ -1,3 +1,5 @@
+// Caminho: src/components/Header/index.tsx
+
 "use client";
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -32,23 +34,22 @@ export function Header() {
             priority
           />
         </Link>
-
         
         <nav className={styles.navDesktop}>
           <Link href="/">Início</Link>
-          <Link href="/seminario">Seminário</Link>
+          <Link href="/programacao">Seminário</Link>
+          <Link href="/editais">Editais</Link>
           <Link href="/noticias">Notícias</Link>
         </nav>
-
        
         <button className={styles.hamburger} onClick={toggleMenu} aria-label="Abrir menu">
           <i className={isMenuOpen ? 'bx bx-x' : 'bx bx-menu'}></i>
         </button>
-
         
         <nav className={`${styles.navMobile} ${isMenuOpen ? styles.open : ''}`}>
           <Link href="/" onClick={toggleMenu}>Início</Link>
-          <Link href="/seminario" onClick={toggleMenu}>Seminário</Link>
+          <Link href="/programacao" onClick={toggleMenu}>Seminário</Link>
+          <Link href="/editais" onClick={toggleMenu}>Editais</Link>
           <Link href="/noticias" onClick={toggleMenu}>Notícias</Link>
         </nav>
       </div>

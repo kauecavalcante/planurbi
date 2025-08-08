@@ -1,0 +1,116 @@
+/* Arquivo: src/components/QuestionCard/QuestionCard.module.css (ATUALIZADO) */
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--cor-bege);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(89, 77, 70, 0.05);
+  transition: all 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(89, 77, 70, 0.08);
+}
+
+.card.answered {
+  background-color: #f8fbf8;
+  border-color: #d4e0d4;
+}
+
+.card.answered .questionText {
+    opacity: 0.7;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.questionNumber {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cor-azul-primario, #0055A5);
+}
+
+.timestamp {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--cor-marrom);
+  opacity: 0.7;
+}
+
+.cardBody {
+  flex-grow: 1;
+}
+
+.questionText {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cor-verde-escuro);
+  margin-bottom: 1.5rem;
+}
+
+/* --- CORREÇÃO DE LAYOUT APLICADA AQUI --- */
+.cardFooter {
+  display: flex;
+  flex-direction: column; /* 1. Itens empilhados verticalmente */
+  align-items: flex-start; /* Alinha tudo à esquerda */
+  gap: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--cor-marrom);
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1rem;
+}
+
+.authorInfo {
+    line-height: 1.5;
+    width: 100%; /* Garante que o container ocupe toda a largura */
+}
+
+.author, .email {
+  margin: 0;
+  word-break: break-word;
+}
+/* --- FIM DA CORREÇÃO --- */
+
+.author strong, .email strong {
+  font-weight: 500;
+}
+
+.statusButton {
+    padding: 0.6rem 1rem; /* Ajuste no padding para melhor aparência */
+    border-radius: 8px;
+    border: 1px solid var(--cor-verde-escuro);
+    background-color: var(--cor-verde-escuro);
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%; /* 2. Botão ocupa toda a largura */
+    text-align: center;
+}
+
+.statusButton:hover {
+    background-color: #004a3e;
+    border-color: #004a3e;
+}
+
+.card.answered .statusButton {
+    background-color: transparent;
+    color: var(--cor-verde-escuro);
+}
+
+.card.answered .statusButton:hover {
+    background-color: #eef3ee;
+}
