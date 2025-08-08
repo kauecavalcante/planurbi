@@ -3,13 +3,13 @@
 .form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.75rem;
 }
 
 .userInfoGrid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.75rem;
 }
 
 @media (min-width: 768px) {
@@ -24,53 +24,55 @@
 }
 
 .label {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     font-weight: 600;
-    color: var(--text-dark, #333);
-    font-size: 0.875rem;
-    font-family: var(--font-hauora, 'sans-serif');
+    color: var(--cor-marrom);
+    font-size: 0.9rem;
+    font-family: var(--font-hauora);
 }
 
-/* Estilo base para TODOS os campos de input, garantindo consistência */
 .input,
 .textarea {
     width: 100%;
     padding: 1rem;
-    border: 1px solid var(--border-color, #DDDDDD);
+    border: 1px solid var(--cor-bege);
     border-radius: 8px;
     font-size: 1rem;
-    font-family: var(--font-hauora, 'sans-serif');
-    background-color: var(--background-light, #fff);
+    font-family: var(--font-hauora);
+    background-color: #fff;
+    color: var(--cor-verde-escuro);
     transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: #a09995;
 }
 
 .input {
     height: 58px;
 }
 
-/* O textarea terá uma altura inicial, mas pode crescer */
 .textarea {
     min-height: 120px;
-    resize: vertical; /* Permite que o usuário aumente a altura se precisar */
+    resize: vertical;
 }
 
-/* Efeito de foco idêntico para todos os campos */
 .input:focus,
 .textarea:focus {
     outline: none;
-    border-color: var(--primary-blue, #0055A5);
+    border-color: var(--cor-azul-primario);
     box-shadow: 0 0 0 3px rgba(0, 85, 165, 0.15);
 }
 
-/* Botão de envio com o estilo do seu site */
 .submitButton {
     width: 100%;
     padding: 1rem;
     border-radius: 8px;
     border: none;
-    background: var(--primary-blue, #0055A5);
+    background: var(--cor-azul-primario);
     color: white;
-    font-family: var(--font-hauora, 'sans-serif');
+    font-family: var(--font-hauora);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -78,8 +80,8 @@
     transition: background-color 0.2s, transform 0.2s;
 }
 
-.submitButton:hover {
-    background: var(--secondary-blue, #003366);
+.submitButton:hover:not(:disabled) {
+    background: var(--cor-azul-secundario);
     transform: translateY(-2px);
 }
 
@@ -89,46 +91,46 @@
     transform: none;
 }
 
-/* Mensagem de sucesso */
 .successMessage {
     text-align: center;
-    padding: 2rem;
-    background-color: #e8f5e9;
-    border: 1px solid #c8e6c9;
+    padding: 2.5rem;
+    background-color: var(--cor-sucesso-fundo);
+    border: 1px solid var(--cor-sucesso-borda);
     border-radius: 8px;
 }
 
 .successMessage h3 {
-    color: #1b5e20;
-    font-size: 1.25rem;
+    font-family: var(--font-anek);
+    color: var(--cor-sucesso-texto);
+    font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .successMessage p {
-    color: #2e7d32;
+    color: var(--cor-marrom);
+    line-height: 1.6;
 }
 
-/* Adicione ao final de src/components/QuestionForm/QuestionForm.module.css */
-
 .errorMessage {
-    color: #D32F2F; /* Vermelho escuro para erros */
-    background-color: #FFEBEE; /* Fundo rosa claro */
-    border: 1px solid #FFCDD2;
+    color: var(--cor-erro-texto);
+    background-color: var(--cor-erro-fundo);
+    border: 1px solid var(--cor-erro-borda);
     border-radius: 8px;
     padding: 1rem;
     text-align: center;
     font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .backButton {
     margin-top: 1.5rem;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
-    border: 1px solid var(--primary-blue, #0055A5);
+    border: 1px solid var(--cor-azul-primario);
     background: transparent;
-    color: var(--primary-blue, #0055A5);
-    font-family: var(--font-hauora, 'sans-serif');
+    color: var(--cor-azul-primario);
+    font-family: var(--font-hauora);
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
@@ -136,6 +138,6 @@
 }
 
 .backButton:hover {
-    background: var(--primary-blue, #0055A5);
+    background: var(--cor-azul-primario);
     color: white;
 }

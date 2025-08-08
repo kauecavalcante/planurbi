@@ -1,0 +1,100 @@
+/* Caminho: src/components/EditalCard/EditalCard.module.css */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid var(--cor-bege);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 4px 12px rgba(89, 77, 70, 0.05);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(89, 77, 70, 0.1);
+}
+
+.cardHeader {
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.numeroEdital {
+    font-family: var(--font-hauora);
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--cor-marrom);
+    opacity: 0.8;
+}
+
+.cardBody {
+    flex-grow: 1;
+}
+
+.titulo {
+    font-family: var(--font-anek);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-verde-escuro);
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+}
+
+.metadata {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-hauora);
+    font-size: 0.95rem;
+    color: var(--cor-marrom);
+}
+
+.metaItem i {
+    font-size: 1.2rem;
+    color: var(--cor-azul-primario);
+}
+
+.status strong {
+    font-weight: 600;
+}
+
+.statusAndamento { color: #2e7d32; }
+.statusConcluido { color: var(--cor-azul-primario); }
+.statusEncerrado { color: #757575; }
+
+.cardFooter {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-hauora);
+    font-weight: 600;
+    color: var(--cor-azul-primario);
+    transition: color 0.2s;
+}
+
+.card:hover .cardFooter {
+    color: var(--cor-azul-secundario);
+}
+
+.cardFooter i {
+    font-size: 1.5rem;
+    transition: transform 0.2s;
+}
+
+.card:hover .cardFooter i {
+    transform: translateX(5px);
+}

@@ -1,12 +1,26 @@
+/* src/app/globals.css */
 :root {
-  --cor-azul-claro: #9EBAF2;
+  /* Cores principais do projeto */
   --cor-verde-escuro: #00362D;
   --cor-marrom: #594D46;
-  --cor-bege: #E8D4B9; 
+  --cor-bege: #E8D4B9;
+  --cor-azul-claro: #9EBAF2;
+
+  /* === ADICIONADO: Cores de Ação e Feedback === */
+  --cor-azul-primario: #0055A5;   /* Azul para botões e links */
+  --cor-azul-secundario: #003366; /* Azul mais escuro para hover */
   
-  
-  --font-heading: var(--font-heading);
-  --font-body: var(--font-body);
+  --cor-sucesso-fundo: #F0F5F0;
+  --cor-sucesso-texto: #00362D;
+  --cor-sucesso-borda: #A8C4B0;
+
+  --cor-erro-fundo: #FFF0F0;
+  --cor-erro-texto: #594D46;
+  --cor-erro-borda: #E8B9B9;
+
+  /* Fontes (mantenha como está no seu projeto) */
+  --font-anek: "Anek Devanagari", sans-serif;
+  --font-hauora: "Hauora", sans-serif;
 }
 
 
@@ -20,11 +34,12 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: #fdfaf6; /* Fundo global suave */
 }
 
 body {
-  color: var(--cor-verde-escuro);
-  font-family: var(--font-body); 
+  color: var(--cor-marrom); /* Cor de texto padrão do projeto */
+  font-family: var(--font-hauora); 
 }
 
 a {
@@ -48,3 +63,4 @@ a {
     border: none; /* Remove a borda padrão do iframe */
   }
 }
+

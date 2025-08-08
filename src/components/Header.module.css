@@ -1,9 +1,11 @@
+/* Caminho: src/components/Header/Header.module.css */
+
 .headerSection {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 0;
   z-index: 1000;
   transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
 }
@@ -11,7 +13,7 @@
 .headerSection.scrolled {
   background-color: var(--cor-verde-escuro);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1rem 2rem;
+  padding: 1rem 0;
 }
 
 .container {
@@ -20,8 +22,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 2rem;
 }
-
 
 .logo {
   opacity: 0;
@@ -34,14 +36,9 @@
   transform: translateY(0);
 }
 
-.logo img {
-  height: auto;
-}
+.logo img { height: auto; }
 
-
-.navDesktop {
-  display: none;
-}
+.navDesktop { display: none; }
 
 @media (min-width: 768px) {
   .navDesktop {
@@ -71,10 +68,7 @@
   transition: width 0.3s ease;
 }
 
-.navDesktop a:hover::after {
-  width: 100%;
-}
-
+.navDesktop a:hover::after { width: 100%; }
 
 .hamburger {
   display: block;
@@ -87,9 +81,7 @@
 }
 
 @media (min-width: 768px) {
-  .hamburger {
-    display: none;
-  }
+  .hamburger { display: none; }
 }
 
 .navMobile {
@@ -107,9 +99,7 @@
   transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-.navMobile.open {
-  left: 0;
-}
+.navMobile.open { left: 0; }
 
 .navMobile a {
   color: #FFFFFF;
