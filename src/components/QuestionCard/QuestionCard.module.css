@@ -1,116 +1,103 @@
-/* Arquivo: src/components/QuestionCard/QuestionCard.module.css (ATUALIZADO) */
-
 .card {
-  background-color: #fff;
-  border-radius: 12px;
-  border: 1px solid var(--cor-bege);
+  font-family: 'Hauora', sans-serif;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
   padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 12px rgba(89, 77, 70, 0.05);
-  transition: all 0.2s;
+  gap: 1rem;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(89, 77, 70, 0.08);
-}
-
-.card.answered {
-  background-color: #f8fbf8;
-  border-color: #d4e0d4;
-}
-
-.card.answered .questionText {
-    opacity: 0.7;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .cardHeader {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
-.questionNumber {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--cor-azul-primario, #0055A5);
+.userName {
+  font-weight: 600; /* Hauora SemiBold */
+  font-size: 1.1rem;
+  color: var(--planurbi-blue, #003366);
 }
 
-.timestamp {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: var(--cor-marrom);
-  opacity: 0.7;
-}
-
-.cardBody {
-  flex-grow: 1;
+.userEmail {
+  font-size: 0.85rem;
+  color: #666;
+  display: block;
+  margin-top: 0.25rem;
 }
 
 .questionText {
-  font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--cor-verde-escuro);
-  margin-bottom: 1.5rem;
-}
-
-/* --- CORREÇÃO DE LAYOUT APLICADA AQUI --- */
-.cardFooter {
-  display: flex;
-  flex-direction: column; /* 1. Itens empilhados verticalmente */
-  align-items: flex-start; /* Alinha tudo à esquerda */
-  gap: 1rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: var(--cor-marrom);
-  border-top: 1px solid #f0f0f0;
-  padding-top: 1rem;
-}
-
-.authorInfo {
-    line-height: 1.5;
-    width: 100%; /* Garante que o container ocupe toda a largura */
-}
-
-.author, .email {
-  margin: 0;
+  color: var(--text-primary, #333333);
   word-break: break-word;
 }
-/* --- FIM DA CORREÇÃO --- */
 
-.author strong, .email strong {
-  font-weight: 500;
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
 }
 
-.statusButton {
-    padding: 0.6rem 1rem; /* Ajuste no padding para melhor aparência */
-    border-radius: 8px;
-    border: 1px solid var(--cor-verde-escuro);
-    background-color: var(--cor-verde-escuro);
-    color: #fff;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    width: 100%; /* 2. Botão ocupa toda a largura */
-    text-align: center;
+.timestamp {
+  font-size: 0.8rem;
+  color: #888888;
 }
 
-.statusButton:hover {
-    background-color: #004a3e;
-    border-color: #004a3e;
+.actions {
+  display: flex;
+  gap: 0.75rem;
 }
 
-.card.answered .statusButton {
-    background-color: transparent;
-    color: var(--cor-verde-escuro);
+.actionButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.card.answered .statusButton:hover {
-    background-color: #eef3ee;
+.approveButton {
+  color: var(--planurbi-green, #00A86B);
+}
+
+.approveButton:hover {
+  background-color: rgba(0, 168, 107, 0.1);
+}
+
+.deleteButton {
+  color: #e74c3c;
+}
+
+.deleteButton:hover {
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+.undoButton {
+  color: #f39c12; /* Um tom de laranja para a ação de desfazer */
+}
+
+.undoButton:hover {
+  background-color: rgba(243, 156, 18, 0.1);
+}
+
+.approved {
+  border-left: 5px solid var(--planurbi-green, #00A86B);
+  background-color: #f6fffa;
 }

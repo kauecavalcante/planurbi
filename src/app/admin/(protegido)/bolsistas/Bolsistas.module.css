@@ -1,0 +1,95 @@
+.container {
+  padding: 2rem;
+  font-family: 'Hauora', sans-serif;
+  background-color: var(--background-light, #f4f7fa);
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--planurbi-blue, #003366);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 0.25rem;
+}
+
+.exportButton {
+  background-color: var(--planurbi-green, #00A86B);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Hauora', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.exportButton:hover {
+  background-color: #008f5a;
+}
+
+.exportButton:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.tableWrapper {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.08);
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  color: var(--planurbi-blue, #003366);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Adiciona o cursor de ponteiro para as linhas clicáveis */
+.clickableRow {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.clickableRow:hover {
+  background-color: #f1f8ff;
+}

@@ -1,0 +1,56 @@
+/* Arquivo: src/app/admin/dashboard/Dashboard.module.css (SEM ALTERAÇÕES) */
+
+.dashboardHeader {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--cor-verde-escuro);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--cor-marrom);
+}
+
+.filterContainer {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--cor-bege);
+  padding-bottom: 1.5rem;
+}
+
+.filterButton {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--cor-bege);
+  background-color: #fff;
+  color: var(--cor-marrom);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filterButton:hover {
+  border-color: var(--cor-azul-primario);
+  color: var(--cor-azul-primario);
+}
+
+.filterButton.active {
+  background-color: var(--cor-azul-primario);
+  color: #fff;
+  border-color: var(--cor-azul-primario);
+}
+
+.questionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}

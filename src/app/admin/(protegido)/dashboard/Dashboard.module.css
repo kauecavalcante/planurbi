@@ -1,56 +1,84 @@
-/* Arquivo: src/app/admin/dashboard/Dashboard.module.css (SEM ALTERAÇÕES) */
-
-.dashboardHeader {
-  margin-bottom: 1.5rem;
+/* Estilo para o novo Dashboard Hub */
+.container {
+  padding: 2rem;
+  font-family: 'Hauora', sans-serif;
+  background-color: var(--background-light, #f4f7fa);
+  min-height: 100vh;
 }
 
 .title {
-  font-family: var(--font-heading);
   font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--cor-verde-escuro);
+  font-weight: 700; /* Hauora Bold */
+  color: var(--planurbi-blue, #003366);
   margin-bottom: 0.5rem;
 }
 
 .subtitle {
-  font-family: var(--font-body);
   font-size: 1.1rem;
-  color: var(--cor-marrom);
+  color: #555;
+  margin-bottom: 3rem;
 }
 
-.filterContainer {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-  border-bottom: 1px solid var(--cor-bege);
-  padding-bottom: 1.5rem;
-}
-
-.filterButton {
-  padding: 0.6rem 1.2rem;
-  border: 1px solid var(--cor-bege);
-  background-color: #fff;
-  color: var(--cor-marrom);
-  border-radius: 8px;
-  font-family: var(--font-body);
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.filterButton:hover {
-  border-color: var(--cor-azul-primario);
-  color: var(--cor-azul-primario);
-}
-
-.filterButton.active {
-  background-color: var(--cor-azul-primario);
-  color: #fff;
-  border-color: var(--cor-azul-primario);
-}
-
-.questionsGrid {
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 51, 102, 0.12);
+}
+
+.cardIconWrapper {
+    background-color: rgba(0, 168, 107, 0.1); /* Fundo verde claro */
+    border-radius: 50%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardIcon {
+  font-size: 2rem;
+  color: var(--planurbi-green, #00A86B);
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 600; /* Hauora SemiBold */
+  color: var(--planurbi-blue, #003366);
+  margin-bottom: 0.75rem;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+.disabledCard {
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.disabledCard:hover {
+  transform: none;
+  box-shadow: 0 4px 12px rgba(0, 51, 102, 0.08);
 }

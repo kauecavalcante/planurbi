@@ -31,7 +31,7 @@ export function CallToActionSection({ formUrl }: CallToActionProps) {
               height={180}
             />
           </a>
-          <p>Aponte a câmara e participe!</p>
+          <p>Aponte a câmera e participe!</p>
         </div>
       </div>
     </section>
